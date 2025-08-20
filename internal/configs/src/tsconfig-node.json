@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    // very strict
+    "allowJs": false,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "exactOptionalPropertyTypes": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noUncheckedSideEffectImports": true,
+
+    // esm
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "target": "esnext",
+
+    // pnpm compatibility
+    "preserveSymlinks": true,
+
+    // self explanatory
+    "resolveJsonModule": true,
+
+    // don't try to check for errors on imported libs
+    "skipLibCheck": true
+  }
+}

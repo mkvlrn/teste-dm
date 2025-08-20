@@ -10,6 +10,7 @@
     "./biome-nest": "./src/biome-nest.jsonc",
     "./biome-react": "./src/biome-react.jsonc",
     "./tsconfig-nest": "./src/tsconfig-nest.json",
+    "./tsconfig-node": "./src/tsconfig-node.json",
     "./tsconfig-react": "./src/tsconfig-react.json"
   }
 }
