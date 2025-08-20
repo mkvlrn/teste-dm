@@ -6,8 +6,8 @@
     "node": "24.x"
   },
   "exports": {
-    "default": "./build/main.js",
-    "types": "./build/main.d.ts"
+    "types": "./build/main.d.ts",
+    "default": "./build/main.js"
   },
   "scripts": {
     "build": "vite build",

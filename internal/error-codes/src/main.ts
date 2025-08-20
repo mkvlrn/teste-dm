@@ -1,19 +1,41 @@
-/** biome-ignore-all lint/suspicious/noConsole: needed, yo */
+export const ErrorCodes = {
+  validation: {
+    employee: {
+      nameRequired: "validation.employee.nameRequired",
+      nameMustBeString: "validation.employee.nameMustBeString",
+      nameTooShort: "validation.employee.nameTooShort",
+      nameTooLong: "validation.employee.nameTooLong",
 
-// biome-ignore lint/correctness/noNodejsModules: backend, all
-import process from "node:process";
-import { divide } from "#/math/advanced-math";
-import { add } from "#/math/basic-math";
+      cpfRequired: "validation.employee.cpfRequired",
+      cpfMustBeString: "validation.employee.cpfMustBeString",
+      cpfInvalid: "validation.employee.cpfInvalid",
 
-const sum = add(1, 2);
-console.log(`1 + 2 = ${sum}`);
+      dobRequired: "validation.employee.dobRequired",
+      dobInvalid: "validation.employee.dobInvalid",
 
-const value = 4;
-const by = 0;
-const div = divide(value, by);
-if (div.error) {
-  console.error(div.error.message);
-  process.exit(1);
-}
+      jobTitleRequired: "validation.employee.jobTitleRequired",
+      jobTitleMustBeString: "validation.employee.jobTitleMustBeString",
+      jobTitleTooShort: "validation.employee.jobTitleTooShort",
+      jobTitleTooLong: "validation.employee.jobTitleTooLong",
+    },
 
-console.log(`4 / ${by} = ${div.value}`);
+    certificate: {
+      employeeIdRequired: "validation.certificate.employeeIdRequired",
+      employeeIdInvalid: "validation.certificate.employeeIdInvalid",
+
+      issuedAtRequired: "validation.certificate.issuedAtRequired",
+      issuedAtInvalid: "validation.certificate.issuedAtInvalid",
+
+      daysRequired: "validation.certificate.daysRequired",
+      daysInvalid: "validation.certificate.daysInvalid",
+
+      cidRequired: "validation.certificate.cidRequired",
+      cidMustBeString: "validation.certificate.cidMustBeString",
+      cidMustBeNumericString: "validation.certificate.cidMustBeNumericString",
+
+      observationsMustBeString: "validation.certificate.observationsMustBeString",
+      observationsTooLong: "validation.certificate.observationsTooLong",
+    },
+  },
+} as const;
+export type ErrorCodes = typeof ErrorCodes;

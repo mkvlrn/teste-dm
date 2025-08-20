@@ -7,6 +7,10 @@
       "cache": true,
       "dependsOn": ["^build"]
     },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
     "test": {
       "cache": false
     },
