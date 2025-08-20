@@ -1,0 +1,11 @@
+{
+  "extends": ["@repo/configs/tsconfig-node"],
+  "compilerOptions": {
+    // no transpiling
+    "noEmit": true,
+
+    // paths
+    "baseUrl": ".",
+    "paths": { "#/*": ["./src/*"] }
+  }
+}
