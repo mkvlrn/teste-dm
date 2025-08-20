@@ -1,0 +1,32 @@
+{
+  "name": "teste-dm",
+  "description": "teste prático DM - sistema de atestados médicos",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "author": "Mike Valeriano <mkvlrn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mkvlrn/teste-dm"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "npx turbo build",
+    "dev": "npx turbo dev",
+    "start": "docker compose up",
+    "test": "npx turbo test",
+    "biome-check": "npx turbo biome-check",
+    "biome-fix": "npx turbo biome-fix",
+    "typecheck": "npx turbo typecheck",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
+    "turbo": "^2.5.6"
+  }
+}

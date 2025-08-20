@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "root": true,
+  // "extends": ["@repo/config/biome-node"],
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**/*", "!**/node_modules/**/*", "!**/build/**/*", "!**/coverage/**/*"]
+  }
+}
