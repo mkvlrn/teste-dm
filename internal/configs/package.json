@@ -1,0 +1,15 @@
+{
+  "name": "@repo/configs",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "exports": {
+    "./biome-node": "./src/biome-node.jsonc",
+    "./biome-nest": "./src/biome-nest.jsonc",
+    "./biome-react": "./src/biome-react.jsonc",
+    "./tsconfig-nest": "./src/tsconfig-nest.json",
+    "./tsconfig-react": "./src/tsconfig-react.json"
+  }
+}
