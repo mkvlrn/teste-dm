@@ -10,7 +10,7 @@ import { RegisterService } from "#/modules/auth/services/register.service";
 import type { PrismaProvider } from "#/shared/providers/prisma.provider";
 import type { BetterAuthInstance } from "#/utils/symbols";
 
-describe("CreateUserService", () => {
+describe("RegisterService", () => {
   const validInput: CreateUserSchema = {
     name: "John Doe",
     email: "john.doe@email.com",

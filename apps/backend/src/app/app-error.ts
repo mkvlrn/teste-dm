@@ -5,7 +5,8 @@ type AppErrorName =
   | "InternalError"
   | "BadGateway"
   | "ValidationError"
-  | "ConflictError";
+  | "ConflictError"
+  | "AuthenticationError";
 
 export class AppError extends Error {
   readonly statusCode: HttpStatus;

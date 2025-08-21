@@ -42,3 +42,15 @@ export const CreateUserSchema = z.strictObject({
     .regex(passwordRegex, ErrorCodes.validation.user.passwordInvalid),
 });
 export type CreateUserSchema = z.infer<typeof CreateUserSchema>;
+
+export const LoginSchema = z.strictObject({
+  ...CreateUserSchema.omit({ name: true }).shape,
+
+  password: z.string({
+    error: (err) =>
+      err.input === undefined
+        ? ErrorCodes.validation.user.passwordRequired
+        : ErrorCodes.validation.user.passwordMustBeString,
+  }),
+});
+export type LoginSchema = z.infer<typeof LoginSchema>;
