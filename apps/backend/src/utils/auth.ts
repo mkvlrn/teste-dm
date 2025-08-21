@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: better-auth does that. a lot. */
 import { hash, verify } from "argon2";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
@@ -7,7 +8,6 @@ import { PrismaClient } from "#/generated/prisma/client";
 const prisma = new PrismaClient();
 
 export const auth = betterAuth({
-  // biome-ignore lint/style/useNamingConvention: blame better-auth for bad casing
   baseURL: env.betterAuthUrl,
   basePath: "auth",
   secret: env.betterAuthSecret,
@@ -30,6 +30,9 @@ export const auth = betterAuth({
   session: {
     expiresIn: env.betterAuthSessionDuration,
     updateAge: env.betterAuthSessionUpdateAge,
+  },
+  onAPIError: {
+    throw: true,
   },
   telemetry: { enabled: false },
 });

@@ -6,9 +6,17 @@
     "node": "24.x"
   },
   "exports": {
+    "./certificate": {
+      "types": "./build/certificate.d.ts",
+      "default": "./build/certificate.js"
+    },
     "./employee": {
       "types": "./build/employee.d.ts",
       "default": "./build/employee.js"
+    },
+    "./user": {
+      "types": "./build/user.d.ts",
+      "default": "./build/user.js"
     }
   },
   "scripts": {

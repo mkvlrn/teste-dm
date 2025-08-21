@@ -6,6 +6,12 @@ const maxNameLength = 128;
 const maxEmaillength = 128;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%]).{8,128}$/;
 
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+};
+
 export const CreateUserSchema = z.strictObject({
   name: z
     .string({

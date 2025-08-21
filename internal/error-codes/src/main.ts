@@ -52,5 +52,13 @@ export const ErrorCodes = {
       observationsTooLong: "validation.certificate.observationsTooLong",
     },
   },
+
+  domain: {
+    userCreation: {
+      emailAlreadyInUse: "domain.userCreation.emailAlreadyInUse",
+      databaseError: "domain.userCreation.databaseError",
+      couldNotCreateUser: "domain.userCreation.couldNotCreateUser",
+    },
+  },
 } as const;
 export type ErrorCodes = typeof ErrorCodes;
