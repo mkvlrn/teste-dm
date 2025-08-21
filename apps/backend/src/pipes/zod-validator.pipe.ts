@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable, type PipeTransform } from "@nestjs/common";
+import { HttpStatus, Injectable, type PipeTransform } from "@nestjs/common";
 import type { ZodType } from "zod";
 import { AppError } from "#/app/app-error";
 
@@ -15,13 +15,11 @@ export class ZodValidator implements PipeTransform {
 
     if (!result.success) {
       const errors = result.error.issues.map((issue) => issue.message);
-      throw new HttpException("ValidationError", HttpStatus.UNPROCESSABLE_ENTITY, {
-        cause: new AppError(
-          "ValidationError",
-          `Input validation failed: ${errors.join(", ")}`,
-          HttpStatus.UNPROCESSABLE_ENTITY,
-        ),
-      });
+      throw new AppError(
+        "ValidationError",
+        `Input validation failed: ${errors.join(", ")}`,
+        HttpStatus.UNPROCESSABLE_ENTITY,
+      );
     }
 
     return result.data;

@@ -2,18 +2,17 @@ import { HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
 import type { CreateUserSchema, User } from "@repo/schemas/user";
-import { AuthService } from "@thallesp/nestjs-better-auth";
 import { APIError } from "better-auth/api";
 import { AppError } from "#/app/app-error";
 import { PrismaProvider } from "#/shared/providers/prisma.provider";
-import type { auth } from "#/utils/auth";
+import { type BetterAuthInstance, betterAuthSymbol } from "#/utils/symbols";
 
 @Injectable()
-export class CreateUserService {
+export class RegisterService {
   @Inject(PrismaProvider) private readonly prisma: PrismaProvider;
-  @Inject(AuthService) private readonly authService: AuthService<typeof auth>;
+  @Inject(betterAuthSymbol) private readonly authService: BetterAuthInstance;
 
-  constructor(prisma: PrismaProvider, authService: AuthService<typeof auth>) {
+  constructor(prisma: PrismaProvider, authService: BetterAuthInstance) {
     this.prisma = prisma;
     this.authService = authService;
   }

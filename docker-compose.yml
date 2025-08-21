@@ -1,24 +1,18 @@
 services:
-  mongo:
-    image: mongo
-    container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_REPLICA_SET_MODE: standalone
-      MONGO_INITDB_REPLICA_SET_NAME: rs0
+  mongodb:
+    container_name: mongodb
+    image: bitnami/mongodb
     ports:
       - 27017:27017
+    environment:
+      MONGODB_ADVERTISED_HOSTNAME: "127.0.0.1"
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_KEY: replicasetkey
+      MONGODB_ROOT_USER: root
+      MONGODB_ROOT_PASSWORD: root
     volumes:
-      - mongodb-data:/data/db
-      - mongodb-configdb:/data/configdb
-    command: >
-      bash -c "
-        echo -n 'devkey' > /data/keyfile &&
-        chmod 400 /data/keyfile &&
-        exec mongod --replSet rs0 --keyFile /data/keyfile
-      "
+      - mongodb-data:/bitnami/mongodb
 
 volumes:
   mongodb-data:
-  mongodb-configdb:
+  mongodb-config-data:

@@ -1,16 +1,14 @@
 /** biome-ignore-all lint/complexity/noExcessiveLinesPerFunction: describes are HUGE */
-import { afterEach } from "node:test";
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import type { CreateUserSchema } from "@repo/schemas/user";
-import type { AuthService } from "@thallesp/nestjs-better-auth";
 import { APIError } from "better-auth/api";
-import { assert, beforeEach, describe, test } from "vitest";
+import { afterEach, assert, beforeEach, describe, test } from "vitest";
 import { type DeepMockProxy, mockDeep, mockReset } from "vitest-mock-extended";
 import { AppError } from "#/app/app-error";
-import { CreateUserService } from "#/modules/auth/services/create-user.service";
+import { RegisterService } from "#/modules/auth/services/register.service";
 import type { PrismaProvider } from "#/shared/providers/prisma.provider";
-import type { auth } from "#/utils/auth";
+import type { BetterAuthInstance } from "#/utils/symbols";
 
 describe("CreateUserService", () => {
   const validInput: CreateUserSchema = {
@@ -19,14 +17,14 @@ describe("CreateUserService", () => {
     password: "@ValidPassword123",
   };
 
-  let service: CreateUserService;
+  let service: RegisterService;
   let mockPrisma: DeepMockProxy<PrismaProvider>;
-  let mockAuthService: DeepMockProxy<AuthService<typeof auth>>;
+  let mockAuthService: DeepMockProxy<BetterAuthInstance>;
 
   beforeEach(() => {
     mockPrisma = mockDeep();
     mockAuthService = mockDeep();
-    service = new CreateUserService(mockPrisma, mockAuthService);
+    service = new RegisterService(mockPrisma, mockAuthService);
   });
 
   afterEach(() => {

@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/style/noMagicNumbers: fine for tests */
-import { HttpException, HttpStatus } from "@nestjs/common";
+import { HttpStatus } from "@nestjs/common";
 import { assert, it } from "vitest";
 import { z } from "zod";
 import { AppError } from "#/app/app-error";
@@ -31,10 +31,7 @@ it("should throw when input is invalid", () => {
     pipe.transform(input);
     assert.fail("Should throw");
   } catch (ex) {
-    assert.instanceOf(ex, HttpException);
-    assert.strictEqual(ex.getStatus(), expectedError.statusCode);
-    assert.strictEqual(ex.message, expectedError.name);
-    assert.instanceOf(ex.cause, AppError);
-    assert.deepStrictEqual(ex.cause, expectedError);
+    assert.instanceOf(ex, AppError);
+    assert.deepStrictEqual(ex, expectedError);
   }
 });
