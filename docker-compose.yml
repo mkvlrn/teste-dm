@@ -1,0 +1,24 @@
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_REPLICA_SET_MODE: standalone
+      MONGO_INITDB_REPLICA_SET_NAME: rs0
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-configdb:/data/configdb
+    command: >
+      bash -c "
+        echo -n 'devkey' > /data/keyfile &&
+        chmod 400 /data/keyfile &&
+        exec mongod --replSet rs0 --keyFile /data/keyfile
+      "
+
+volumes:
+  mongodb-data:
+  mongodb-configdb:
