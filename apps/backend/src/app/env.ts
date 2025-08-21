@@ -7,6 +7,12 @@ const schema = z.object({
   port: z.coerce.number(),
   icdApiClientId: z.string(),
   icdApiClientSecret: z.string(),
+  betterAuthSecret: z.string(),
+  betterAuthUrl: z.url(),
+  betterAuthSessionDuration: z.coerce.number(),
+  betterAuthSessionUpdateAge: z.coerce.number(),
+  betterAuthCookiePrefix: z.string(),
+  mongodbUrl: z.url(),
 });
 
 const parsedEnv = schema.safeParse(process.env);
