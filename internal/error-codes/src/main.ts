@@ -1,5 +1,20 @@
 export const ErrorCodes = {
   validation: {
+    user: {
+      nameRequired: "validation.user.nameRequired",
+      nameMustBeString: "validation.user.nameMustBeString",
+      nameTooShort: "validation.user.nameTooShort",
+      nameTooLong: "validation.user.nameTooLong",
+
+      emailRequired: "validation.user.emailRequired",
+      emailInvalid: "validation.user.emailInvalid",
+      emailTooLong: "validation.email.emailTooLong",
+
+      passwordRequired: "validation.password.passwordRequired",
+      passwordMustBeString: "validation.password.passwordMustBeString",
+      passwordInvalid: "validation.password.passwordInvalid",
+    },
+
     employee: {
       nameRequired: "validation.employee.nameRequired",
       nameMustBeString: "validation.employee.nameMustBeString",
