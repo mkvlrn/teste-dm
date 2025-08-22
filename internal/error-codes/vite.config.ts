@@ -1,5 +1,6 @@
 import { globSync } from "node:fs";
 import nodeExternals from "rollup-plugin-node-externals";
+import type { PluginOption } from "vite";
 import dts from "vite-plugin-dts";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
@@ -12,7 +13,7 @@ const entryRoot = "src";
 export default defineConfig({
   plugins: [
     // externalize node built-ins
-    nodeExternals(),
+    nodeExternals() as PluginOption,
     // resolve tsconfig path aliases
     tsconfigPaths(),
     // declarations

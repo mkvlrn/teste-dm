@@ -59,6 +59,10 @@ export const ErrorCodes = {
       databaseError: "domain.userCreation.databaseError",
       couldNotCreateUser: "domain.userCreation.couldNotCreateUser",
     },
+
+    userAuth: {
+      logoutError: "domain.userAuth.logoutError",
+    },
   },
 } as const;
 export type ErrorCodes = typeof ErrorCodes;

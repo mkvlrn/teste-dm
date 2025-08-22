@@ -30,9 +30,6 @@
     "husky": "^9.1.7",
     "turbo": "^2.5.6"
   },
-  "overrides": {
-    "better-call": "1.0.13"
-  },
   "workspaces": [
     "apps/*",
     "internal/*"

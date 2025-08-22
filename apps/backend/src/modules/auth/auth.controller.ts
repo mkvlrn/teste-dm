@@ -6,11 +6,13 @@ import {
   HttpStatus,
   Inject,
   Post,
+  Req,
   Res,
 } from "@nestjs/common";
 import { CreateUserSchema, LoginSchema } from "@repo/schemas/user";
-import type { Response } from "express";
+import type { Request, Response } from "express";
 import { LoginService } from "#/modules/auth/services/login.service";
+import { LogoutService } from "#/modules/auth/services/logout.service";
 import { RegisterService } from "#/modules/auth/services/register.service";
 import { ZodValidator } from "#/pipes/zod-validator.pipe";
 
@@ -18,10 +20,16 @@ import { ZodValidator } from "#/pipes/zod-validator.pipe";
 export class AuthController {
   @Inject(RegisterService) private readonly registerService: RegisterService;
   @Inject(LoginService) private readonly loginService: LoginService;
+  @Inject(LogoutService) private readonly logoutService: LogoutService;
 
-  constructor(registerService: RegisterService, loginService: LoginService) {
+  constructor(
+    registerService: RegisterService,
+    loginService: LoginService,
+    logoutService: LogoutService,
+  ) {
     this.registerService = registerService;
     this.loginService = loginService;
+    this.logoutService = logoutService;
   }
 
   @Post("register")
@@ -66,5 +74,20 @@ export class AuthController {
       success: true,
       data: user,
     };
+  }
+
+  @Post("logout")
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
+    const cookies = await this.logoutService.run(req.headers);
+    if (cookies.error) {
+      throw cookies.error;
+    }
+
+    for (const cookie of cookies.value) {
+      res.append("set-cookie", cookie);
+    }
+
+    return;
   }
 }

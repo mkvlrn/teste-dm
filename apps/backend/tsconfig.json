@@ -7,5 +7,7 @@
     // paths
     "baseUrl": ".",
     "paths": { "#/*": ["./src/*"] }
-  }
+  },
+
+  "exclude": ["src/generated"]
 }
