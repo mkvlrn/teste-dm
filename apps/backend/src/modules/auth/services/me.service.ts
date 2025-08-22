@@ -2,7 +2,7 @@ import type { IncomingHttpHeaders } from "node:http";
 import { HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
-import type { User } from "@repo/schemas/user";
+import type { UserEntity } from "@repo/schemas/user";
 import type { Auth, Session } from "better-auth";
 import { fromNodeHeaders } from "better-auth/node";
 import { AppError } from "#/app/app-error";
@@ -16,7 +16,7 @@ export class MeService {
     this.authService = authService;
   }
 
-  async run(headers: IncomingHttpHeaders): AsyncResult<[Session, User], AppError> {
+  async run(headers: IncomingHttpHeaders): AsyncResult<[Session, UserEntity], AppError> {
     try {
       const sessionData = await this.authService.api.getSession({
         headers: fromNodeHeaders(headers),

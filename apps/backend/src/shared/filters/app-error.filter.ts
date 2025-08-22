@@ -10,8 +10,6 @@ export class AppErrorFilter implements ExceptionFilter {
     response.status(exception.statusCode).json({
       statusCode: exception.statusCode,
       message: exception.message,
-      // Add custom fields as needed
-      timestamp: new Date().toISOString(),
     });
   }
 }

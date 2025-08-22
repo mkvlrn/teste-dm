@@ -1,7 +1,7 @@
 import { HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
-import type { LoginSchema, User } from "@repo/schemas/user";
+import type { LoginSchema, UserEntity } from "@repo/schemas/user";
 import type { Auth } from "better-auth";
 import { APIError } from "better-auth/api";
 import { AppError } from "#/app/app-error";
@@ -15,11 +15,11 @@ export class LoginService {
     this.authService = authService;
   }
 
-  async run(input: LoginSchema): AsyncResult<[User, string], AppError> {
+  async run(input: LoginSchema): AsyncResult<[UserEntity, string], AppError> {
     return await this.login(input);
   }
 
-  private async login(input: LoginSchema): AsyncResult<[User, string], AppError> {
+  private async login(input: LoginSchema): AsyncResult<[UserEntity, string], AppError> {
     try {
       const authUser = await this.authService.api.signInEmail({
         body: {

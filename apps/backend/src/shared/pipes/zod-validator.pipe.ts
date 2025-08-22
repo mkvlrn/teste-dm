@@ -1,4 +1,5 @@
 import { HttpStatus, Injectable, type PipeTransform } from "@nestjs/common";
+import { ErrorCodes } from "@repo/error-codes";
 import type { ZodType } from "zod";
 import { AppError } from "#/app/app-error";
 
@@ -17,7 +18,7 @@ export class ZodValidator implements PipeTransform {
       const errors = result.error.issues.map((issue) => issue.message);
       throw new AppError(
         "ValidationError",
-        `Input validation failed: ${errors.join(", ")}`,
+        `${ErrorCodes.validation.default}: ${errors.join(", ")}`,
         HttpStatus.UNPROCESSABLE_ENTITY,
       );
     }

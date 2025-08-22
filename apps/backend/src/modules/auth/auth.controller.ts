@@ -55,10 +55,7 @@ export class AuthController {
     const [user, authCookie] = result.value;
     res.setHeader("set-cookie", authCookie);
 
-    return {
-      success: true,
-      data: user,
-    };
+    return user;
   }
 
   @Post("login")
@@ -77,10 +74,7 @@ export class AuthController {
     const [user, authCookie] = result.value;
     res.setHeader("set-cookie", authCookie);
 
-    return {
-      success: true,
-      data: user,
-    };
+    return user;
   }
 
   @Post("logout")

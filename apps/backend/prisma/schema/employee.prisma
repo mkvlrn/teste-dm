@@ -1,0 +1,11 @@
+model Employee {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  cpf         String
+  dateOfBirth DateTime
+  jobTitle    String
+  active      Boolean  @default(true)
+
+  @@unique([cpf])
+  @@map("employee")
+}

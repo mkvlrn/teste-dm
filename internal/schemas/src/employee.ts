@@ -54,3 +54,9 @@ export const CreateEmployeeSchema = z.strictObject({
     .max(maxJobLength, { error: ErrorCodes.validation.employee.jobTitleTooLong }),
 });
 export type CreateEmployeeSchema = z.infer<typeof CreateEmployeeSchema>;
+
+export const UpdateEmployeeSchema = z.strictObject({
+  ...CreateEmployeeSchema.partial().shape,
+  active: z.boolean({ error: ErrorCodes.domain.employeeUpdate.activeInvalid }).optional(),
+});
+export type UpdateEmployeeSchema = z.infer<typeof UpdateEmployeeSchema>;

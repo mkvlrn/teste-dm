@@ -1,7 +1,7 @@
 import { HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
-import type { CreateUserSchema, User } from "@repo/schemas/user";
+import type { CreateUserSchema, UserEntity } from "@repo/schemas/user";
 import type { Auth } from "better-auth";
 import { APIError } from "better-auth/api";
 import { AppError } from "#/app/app-error";
@@ -18,7 +18,7 @@ export class RegisterService {
     this.authService = authService;
   }
 
-  async run(input: CreateUserSchema): AsyncResult<[User, string], AppError> {
+  async run(input: CreateUserSchema): AsyncResult<[UserEntity, string], AppError> {
     const isEmailInUse = await this.isEmailInUse(input.email);
     if (isEmailInUse.error) {
       return R.error(isEmailInUse.error);
@@ -27,7 +27,7 @@ export class RegisterService {
     return this.register(input);
   }
 
-  private async register(input: CreateUserSchema): AsyncResult<[User, string], AppError> {
+  private async register(input: CreateUserSchema): AsyncResult<[UserEntity, string], AppError> {
     try {
       const authUser = await this.authService.api.signUpEmail({
         body: {
@@ -42,6 +42,7 @@ export class RegisterService {
 
       return R.ok([{ id, name, email }, authCookie]);
     } catch (err) {
+      console.dir(err);
       const msg =
         err instanceof APIError
           ? `${ErrorCodes.domain.userCreation.databaseError}: ${err.message}`

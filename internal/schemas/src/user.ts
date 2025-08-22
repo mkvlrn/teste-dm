@@ -6,7 +6,7 @@ const maxNameLength = 128;
 const maxEmaillength = 128;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%]).{8,128}$/;
 
-export type User = {
+export type UserEntity = {
   id: string;
   name: string;
   email: string;

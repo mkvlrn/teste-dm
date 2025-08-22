@@ -1,5 +1,6 @@
 /** biome-ignore-all lint/style/noMagicNumbers: fine for tests */
 import { HttpStatus } from "@nestjs/common";
+import { ErrorCodes } from "@repo/error-codes";
 import { assert, it } from "vitest";
 import { z } from "zod";
 import { AppError } from "#/app/app-error";
@@ -22,7 +23,7 @@ it("should validate input", () => {
 it("should throw when input is invalid", () => {
   const expectedError = new AppError(
     "ValidationError",
-    "Input validation failed: Too small: expected number to be >=18",
+    `${ErrorCodes.validation.default}: Too small: expected number to be >=18`,
     HttpStatus.UNPROCESSABLE_ENTITY,
   );
   const input = { age: 17 };

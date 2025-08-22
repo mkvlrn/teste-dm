@@ -1,5 +1,6 @@
 export const ErrorCodes = {
   validation: {
+    default: "validation.default",
     user: {
       nameRequired: "validation.user.nameRequired",
       nameMustBeString: "validation.user.nameMustBeString",
@@ -63,6 +64,20 @@ export const ErrorCodes = {
     userAuth: {
       logoutError: "domain.userAuth.logoutError",
       noSession: "domain.userAuth.noSession",
+    },
+
+    employee: {
+      notFound: "domain.employee.notFound",
+      databaseError: "domain.employee.databaseError",
+    },
+    employeeCreation: {
+      cpfAlreadyInUse: "domain.employeeCreation.cpfAlreadyInUse",
+      databaseError: "domain.employeeCreation.databaseError",
+    },
+    employeeUpdate: {
+      cpfAlreadyInUse: "domain.employeeUpdate.cpfAlreadyInUse",
+      databaseError: "domain.employeeUpdate.databaseError",
+      activeInvalid: "domain.employeeUpdate.activeInvalid",
     },
   },
 } as const;
