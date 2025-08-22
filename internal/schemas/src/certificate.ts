@@ -23,7 +23,6 @@ export const CreateCertificateSchema = z.strictObject({
   }),
 
   issuedAt: z.iso.datetime({
-    local: true,
     error: (err) =>
       err.input === undefined
         ? ErrorCodes.validation.certificate.issuedAtRequired
