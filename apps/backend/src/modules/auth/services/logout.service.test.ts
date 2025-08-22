@@ -1,11 +1,11 @@
 import type { IncomingHttpHeaders } from "node:http";
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
+import type { Auth } from "better-auth";
 import { afterEach, assert, beforeEach, describe, test } from "vitest";
 import { type DeepMockProxy, mockDeep, mockReset } from "vitest-mock-extended";
 import { AppError } from "#/app/app-error";
 import { LogoutService } from "#/modules/auth/services/logout.service";
-import type { BetterAuthInstance } from "#/utils/symbols";
 
 describe("LogoutService", () => {
   const validInput: IncomingHttpHeaders = {
@@ -13,7 +13,7 @@ describe("LogoutService", () => {
   };
 
   let service: LogoutService;
-  let mockAuthService: DeepMockProxy<BetterAuthInstance>;
+  let mockAuthService: DeepMockProxy<Auth>;
 
   beforeEach(() => {
     mockAuthService = mockDeep();

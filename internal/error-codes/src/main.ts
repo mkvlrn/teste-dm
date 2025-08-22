@@ -62,6 +62,7 @@ export const ErrorCodes = {
 
     userAuth: {
       logoutError: "domain.userAuth.logoutError",
+      noSession: "domain.userAuth.noSession",
     },
   },
 } as const;

@@ -2,15 +2,16 @@ import { HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
 import type { LoginSchema, User } from "@repo/schemas/user";
+import type { Auth } from "better-auth";
 import { APIError } from "better-auth/api";
 import { AppError } from "#/app/app-error";
-import { type BetterAuthInstance, betterAuthSymbol } from "#/utils/symbols";
+import { betterAuthSymbol } from "#/utils/symbols";
 
 @Injectable()
 export class LoginService {
-  @Inject(betterAuthSymbol) private readonly authService: BetterAuthInstance;
+  @Inject(betterAuthSymbol) private readonly authService: Auth;
 
-  constructor(authService: BetterAuthInstance) {
+  constructor(authService: Auth) {
     this.authService = authService;
   }
 

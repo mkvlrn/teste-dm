@@ -2,12 +2,12 @@
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import type { LoginSchema } from "@repo/schemas/user";
+import type { Auth } from "better-auth";
 import { APIError } from "better-auth/api";
 import { afterEach, assert, beforeEach, describe, test } from "vitest";
 import { type DeepMockProxy, mockDeep, mockReset } from "vitest-mock-extended";
 import { AppError } from "#/app/app-error";
 import { LoginService } from "#/modules/auth/services/login.service";
-import type { BetterAuthInstance } from "#/utils/symbols";
 
 describe("LoginService", () => {
   const validInput: LoginSchema = {
@@ -16,7 +16,7 @@ describe("LoginService", () => {
   };
 
   let service: LoginService;
-  let mockAuthService: DeepMockProxy<BetterAuthInstance>;
+  let mockAuthService: DeepMockProxy<Auth>;
 
   beforeEach(() => {
     mockAuthService = mockDeep();

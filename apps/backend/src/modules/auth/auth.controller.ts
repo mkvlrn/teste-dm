@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpException,
   HttpStatus,
@@ -8,11 +9,14 @@ import {
   Post,
   Req,
   Res,
+  UseGuards,
 } from "@nestjs/common";
 import { CreateUserSchema, LoginSchema } from "@repo/schemas/user";
 import type { Request, Response } from "express";
+import { AuthGuard } from "#/guards/auth.guard";
 import { LoginService } from "#/modules/auth/services/login.service";
 import { LogoutService } from "#/modules/auth/services/logout.service";
+import { MeService } from "#/modules/auth/services/me.service";
 import { RegisterService } from "#/modules/auth/services/register.service";
 import { ZodValidator } from "#/pipes/zod-validator.pipe";
 
@@ -21,15 +25,18 @@ export class AuthController {
   @Inject(RegisterService) private readonly registerService: RegisterService;
   @Inject(LoginService) private readonly loginService: LoginService;
   @Inject(LogoutService) private readonly logoutService: LogoutService;
+  @Inject(MeService) private readonly meService: MeService;
 
   constructor(
     registerService: RegisterService,
     loginService: LoginService,
     logoutService: LogoutService,
+    meService: MeService,
   ) {
     this.registerService = registerService;
     this.loginService = loginService;
     this.logoutService = logoutService;
+    this.meService = meService;
   }
 
   @Post("register")
@@ -89,5 +96,18 @@ export class AuthController {
     }
 
     return;
+  }
+
+  @Get("me")
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(AuthGuard)
+  async me(@Req() req: Request) {
+    const result = await this.meService.run(req.headers);
+    if (result.error) {
+      throw result.error;
+    }
+
+    const [session, user] = result.value;
+    return { session, user };
   }
 }

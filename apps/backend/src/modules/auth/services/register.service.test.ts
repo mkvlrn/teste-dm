@@ -2,13 +2,13 @@
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import type { CreateUserSchema } from "@repo/schemas/user";
+import type { Auth } from "better-auth";
 import { APIError } from "better-auth/api";
 import { afterEach, assert, beforeEach, describe, test } from "vitest";
 import { type DeepMockProxy, mockDeep, mockReset } from "vitest-mock-extended";
 import { AppError } from "#/app/app-error";
 import { RegisterService } from "#/modules/auth/services/register.service";
 import type { PrismaProvider } from "#/shared/providers/prisma.provider";
-import type { BetterAuthInstance } from "#/utils/symbols";
 
 describe("RegisterService", () => {
   const validInput: CreateUserSchema = {
@@ -19,7 +19,7 @@ describe("RegisterService", () => {
 
   let service: RegisterService;
   let mockPrisma: DeepMockProxy<PrismaProvider>;
-  let mockAuthService: DeepMockProxy<BetterAuthInstance>;
+  let mockAuthService: DeepMockProxy<Auth>;
 
   beforeEach(() => {
     mockPrisma = mockDeep();
