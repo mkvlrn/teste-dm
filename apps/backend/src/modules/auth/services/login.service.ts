@@ -5,7 +5,7 @@ import type { LoginSchema, User } from "@repo/schemas/user";
 import type { Auth } from "better-auth";
 import { APIError } from "better-auth/api";
 import { AppError } from "#/app/app-error";
-import { betterAuthSymbol } from "#/utils/symbols";
+import { betterAuthSymbol } from "#/shared/utils/symbols";
 
 @Injectable()
 export class LoginService {

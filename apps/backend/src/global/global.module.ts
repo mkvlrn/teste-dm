@@ -1,5 +1,5 @@
 import { Global, Module } from "@nestjs/common";
-import { PrismaProvider } from "#/shared/providers/prisma.provider";
+import { PrismaProvider } from "#/global/providers/prisma.provider";
 
 @Global()
 @Module({
@@ -8,4 +8,4 @@ import { PrismaProvider } from "#/shared/providers/prisma.provider";
   providers: [PrismaProvider],
   controllers: [],
 })
-export class SharedModule {}
+export class GlobalModule {}

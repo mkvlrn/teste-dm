@@ -4,7 +4,7 @@ import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
 import type { Auth } from "better-auth";
 import { AppError } from "#/app/app-error";
-import { betterAuthSymbol } from "#/utils/symbols";
+import { betterAuthSymbol } from "#/shared/utils/symbols";
 
 @Injectable()
 export class LogoutService {

@@ -6,7 +6,7 @@ import type { User } from "@repo/schemas/user";
 import type { Auth, Session } from "better-auth";
 import { fromNodeHeaders } from "better-auth/node";
 import { AppError } from "#/app/app-error";
-import { betterAuthSymbol } from "#/utils/symbols";
+import { betterAuthSymbol } from "#/shared/utils/symbols";
 
 @Injectable()
 export class MeService {

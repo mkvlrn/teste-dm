@@ -7,8 +7,8 @@ import { APIError } from "better-auth/api";
 import { afterEach, assert, beforeEach, describe, test } from "vitest";
 import { type DeepMockProxy, mockDeep, mockReset } from "vitest-mock-extended";
 import { AppError } from "#/app/app-error";
+import type { PrismaProvider } from "#/global/providers/prisma.provider";
 import { RegisterService } from "#/modules/auth/services/register.service";
-import type { PrismaProvider } from "#/shared/providers/prisma.provider";
 
 describe("RegisterService", () => {
   const validInput: CreateUserSchema = {

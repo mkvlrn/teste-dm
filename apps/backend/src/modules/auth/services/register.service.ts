@@ -5,8 +5,8 @@ import type { CreateUserSchema, User } from "@repo/schemas/user";
 import type { Auth } from "better-auth";
 import { APIError } from "better-auth/api";
 import { AppError } from "#/app/app-error";
-import { PrismaProvider } from "#/shared/providers/prisma.provider";
-import { betterAuthSymbol } from "#/utils/symbols";
+import { PrismaProvider } from "#/global/providers/prisma.provider";
+import { betterAuthSymbol } from "#/shared/utils/symbols";
 
 @Injectable()
 export class RegisterService {

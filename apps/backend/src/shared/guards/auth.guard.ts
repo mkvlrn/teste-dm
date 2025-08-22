@@ -9,7 +9,7 @@ import { ErrorCodes } from "@repo/error-codes";
 import type { Auth } from "better-auth";
 import { fromNodeHeaders } from "better-auth/node";
 import { AppError } from "#/app/app-error";
-import { betterAuthSymbol } from "#/utils/symbols";
+import { betterAuthSymbol } from "#/shared/utils/symbols";
 
 @Injectable()
 export class AuthGuard implements CanActivate {

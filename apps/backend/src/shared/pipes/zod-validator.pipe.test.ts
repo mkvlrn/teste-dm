@@ -3,7 +3,7 @@ import { HttpStatus } from "@nestjs/common";
 import { assert, it } from "vitest";
 import { z } from "zod";
 import { AppError } from "#/app/app-error";
-import { ZodValidator } from "#/pipes/zod-validator.pipe";
+import { ZodValidator } from "#/shared/pipes/zod-validator.pipe";
 
 const schema = z.strictObject({
   age: z.number().min(18),

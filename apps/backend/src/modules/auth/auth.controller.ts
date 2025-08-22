@@ -13,12 +13,12 @@ import {
 } from "@nestjs/common";
 import { CreateUserSchema, LoginSchema } from "@repo/schemas/user";
 import type { Request, Response } from "express";
-import { AuthGuard } from "#/guards/auth.guard";
 import { LoginService } from "#/modules/auth/services/login.service";
 import { LogoutService } from "#/modules/auth/services/logout.service";
 import { MeService } from "#/modules/auth/services/me.service";
 import { RegisterService } from "#/modules/auth/services/register.service";
-import { ZodValidator } from "#/pipes/zod-validator.pipe";
+import { AuthGuard } from "#/shared/guards/auth.guard";
+import { ZodValidator } from "#/shared/pipes/zod-validator.pipe";
 
 @Controller("auth")
 export class AuthController {

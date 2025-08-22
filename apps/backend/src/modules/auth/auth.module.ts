@@ -4,8 +4,8 @@ import { LoginService } from "#/modules/auth/services/login.service";
 import { LogoutService } from "#/modules/auth/services/logout.service";
 import { MeService } from "#/modules/auth/services/me.service";
 import { RegisterService } from "#/modules/auth/services/register.service";
-import { auth } from "#/utils/auth";
-import { betterAuthSymbol } from "#/utils/symbols";
+import { auth } from "#/shared/utils/auth";
+import { betterAuthSymbol } from "#/shared/utils/symbols";
 
 @Module({
   imports: [],
