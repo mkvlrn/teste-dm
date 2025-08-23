@@ -1,0 +1,10 @@
+{
+  "name": "Vite-React Single Page App",
+  "short_name": "vite-react-spa",
+  "description": "Vite-React Single Page App",
+  "start_url": "/",
+  "lang": "en",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

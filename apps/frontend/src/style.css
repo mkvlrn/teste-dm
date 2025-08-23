@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* biome-ignore lint/suspicious/noUnknownAtRules: tailwind stuff */
+@theme {
+  --foreground: #daf7dc;
+  --background: #2f4858;
+
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --font-roboto-condensed: "Roboto Condensed", sans-serif;
+}
