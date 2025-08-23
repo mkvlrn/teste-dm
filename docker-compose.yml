@@ -1,3 +1,5 @@
+name: mkvlrn-teste-dm
+
 services:
   mongodb:
     container_name: mongodb
@@ -12,6 +14,27 @@ services:
       MONGODB_ROOT_PASSWORD: root
     volumes:
       - mongodb-data:/bitnami/mongodb
+
+  backend:
+    depends_on:
+      - mongodb
+    container_name: backend
+    image: mkvlrn/teste-dm-backend
+    ports:
+      - 4000:4000
+    build:
+      context: .
+      dockerfile: .backend.Dockerfile
+    environment:
+      - port=4000
+      - icdApiClientId=11b1eb5e-eaa5-49e2-953c-e1e17215d679_8a1907bc-03f1-4edb-8dbf-2957d18bca4c
+      - icdApiClientSecret=lZU3BoZyiYQjFYIw8zDHuJY6pUg4A68W1oOHXDYYpu0=
+      - betterAuthSecret=secret
+      - betterAuthUrl=http://localhost:4000
+      - betterAuthSessionDuration=14400
+      - betterAuthSessionUpdateAge=1200
+      - betterAuthCookiePrefix=mkvlrn-teste-dm
+      - mongodbUrl=mongodb://root:root@mongodb:27017/teste-dm?authSource=admin&directConnection=true&connectTimeoutMS=5000&serverSelectionTimeoutMS=5000
 
 volumes:
   mongodb-data:

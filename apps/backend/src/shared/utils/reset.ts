@@ -15,12 +15,9 @@ const prisma = new PrismaClient();
 
 // drop all
 try {
-  await prisma.user.deleteMany();
-  await prisma.session.deleteMany();
-  await prisma.account.deleteMany();
-  await prisma.verification.deleteMany();
-  await prisma.employee.deleteMany();
-  await prisma.certificate.deleteMany();
+  await prisma.$runCommandRaw({ delete: "verification", deletes: [{ q: {}, limit: 0 }] });
+  await prisma.$runCommandRaw({ delete: "user", deletes: [{ q: {}, limit: 0 }] });
+  await prisma.$runCommandRaw({ delete: "employee", deletes: [{ q: {}, limit: 0 }] });
 } catch (err) {
   console.error((err as Error).message);
   process.exit(1);
