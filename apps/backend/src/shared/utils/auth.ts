@@ -19,6 +19,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false,
+    minPasswordLength: 5,
     password: {
       // use argon2 for password hashing
       hash,
@@ -30,6 +31,9 @@ export const auth = betterAuth({
   session: {
     expiresIn: env.betterAuthSessionDuration,
     updateAge: env.betterAuthSessionUpdateAge,
+  },
+  user: {
+    deleteUser: { enabled: true },
   },
   onAPIError: {
     throw: true,
