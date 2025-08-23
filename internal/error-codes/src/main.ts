@@ -91,6 +91,19 @@ export const ErrorCodes = {
     certificateUpdate: {
       databaseError: "domain.employeeUpdate.databaseError",
     },
+
+    query: {
+      qMustBestring: "domain.query.qMustBestring",
+      pageMustBePositiveNumber: "domain.query.pageMustBePositiveNumber",
+      limitMustBePositiveNumber: "domain.query.limitMustBePositiveNumber",
+      limitCannotExceed100: "domain.query.limitCannotExceed100",
+    },
+    employeeQuery: {
+      activeInvalid: "domain.employeeQuery.activeInvalid",
+    },
+    certificateQuery: {
+      employeeIdInvalid: "domain.certificateQuery.employeeIdInvalid",
+    },
   },
 } as const;
 export type ErrorCodes = typeof ErrorCodes;

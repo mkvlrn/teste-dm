@@ -4,15 +4,16 @@ import {
   Delete,
   Get,
   HttpCode,
-  HttpException,
   HttpStatus,
   Inject,
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 import { CreateCertificateSchema, UpdateCertificateSchema } from "@repo/schemas/certificate";
+import { CertificateQuerySchema } from "@repo/schemas/query";
 import { CreateCertificateService } from "#/modules/certificate/services/create-certificate.service";
 import { DeleteCertificateService } from "#/modules/certificate/services/delete-certificate.service";
 import { GetCertificateService } from "#/modules/certificate/services/get-certificate.service";
@@ -57,8 +58,8 @@ export class CertificateController {
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  async list() {
-    const result = await this.listService.run();
+  async list(@Query(new ZodValidator(CertificateQuerySchema)) query: CertificateQuerySchema) {
+    const result = await this.listService.run(query);
     if (result.error) {
       throw result.error;
     }

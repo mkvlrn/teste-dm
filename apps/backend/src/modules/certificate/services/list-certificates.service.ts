@@ -2,8 +2,11 @@ import { HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
 import type { CertificateEntity } from "@repo/schemas/certificate";
+import type { CertificateQuerySchema } from "@repo/schemas/query";
 import { AppError } from "#/app/app-error";
+import type { Prisma } from "#/generated/prisma/client";
 import { PrismaProvider } from "#/global/providers/prisma.provider";
+import { PaginatedResult } from "#/shared/utils/paginated-result";
 
 @Injectable()
 export class ListCertificatesService {
@@ -13,13 +16,20 @@ export class ListCertificatesService {
     this.prisma = prisma;
   }
 
-  async run(): AsyncResult<CertificateEntity[], AppError> {
+  async run(
+    query: CertificateQuerySchema,
+  ): AsyncResult<PaginatedResult<CertificateEntity>, AppError> {
     try {
+      const { page, limit } = query;
+      const where = this.parseQuery(query);
+      const totalItems = await this.prisma.certificate.count({ where });
       const certificates = await this.prisma.certificate.findMany({
-        orderBy: { issuedAt: "desc" },
+        where,
+        skip: (page - 1) * limit,
+        take: limit,
       });
 
-      const result = certificates.map((certificate) => ({
+      const data = certificates.map((certificate) => ({
         id: certificate.id,
         employeeId: certificate.employeeId,
         issuedAt: certificate.issuedAt.toISOString(),
@@ -28,7 +38,7 @@ export class ListCertificatesService {
         observations: certificate.observations,
       }));
 
-      return R.ok(result);
+      return R.ok(new PaginatedResult<CertificateEntity>(totalItems, limit, page, data));
     } catch (err) {
       const error = new AppError(
         "InternalError",
@@ -37,5 +47,22 @@ export class ListCertificatesService {
       );
       return R.error(error);
     }
+  }
+
+  private parseQuery(query: CertificateQuerySchema): Prisma.CertificateWhereInput {
+    const where: Prisma.CertificateWhereInput = {};
+
+    if (query.employeeId) {
+      where.employeeId = query.employeeId;
+    }
+
+    if (query.q) {
+      where.OR = [
+        { cid: { contains: query.q, mode: "insensitive" } },
+        { observations: { contains: query.q, mode: "insensitive" } },
+      ];
+    }
+
+    return where;
   }
 }

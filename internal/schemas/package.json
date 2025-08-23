@@ -17,6 +17,10 @@
     "./user": {
       "types": "./build/user.d.ts",
       "default": "./build/user.js"
+    },
+    "./query": {
+      "types": "./build/query.d.ts",
+      "default": "./build/query.js"
     }
   },
   "scripts": {

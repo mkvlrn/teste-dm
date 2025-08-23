@@ -4,15 +4,16 @@ import {
   Delete,
   Get,
   HttpCode,
-  HttpException,
   HttpStatus,
   Inject,
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 import { CreateEmployeeSchema, UpdateEmployeeSchema } from "@repo/schemas/employee";
+import { EmployeeQuerySchema } from "@repo/schemas/query";
 import { CreateEmployeeService } from "#/modules/employee/services/create-employee.service";
 import { DeleteEmployeeService } from "#/modules/employee/services/delete-employee.service";
 import { GetEmployeeService } from "#/modules/employee/services/get-employee.service";
@@ -57,8 +58,8 @@ export class EmployeeController {
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  async list() {
-    const result = await this.listService.run();
+  async list(@Query(new ZodValidator(EmployeeQuerySchema)) query: EmployeeQuerySchema) {
+    const result = await this.listService.run(query);
     if (result.error) {
       throw result.error;
     }
