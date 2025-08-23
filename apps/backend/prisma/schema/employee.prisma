@@ -6,6 +6,8 @@ model Employee {
   jobTitle    String
   active      Boolean  @default(true)
 
+  certificates Certificate[]
+
   @@unique([cpf])
   @@map("employee")
 }

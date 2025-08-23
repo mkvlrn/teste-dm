@@ -11,7 +11,7 @@ export type CertificateEntity = {
   issuedAt: string;
   days: number;
   cid: string;
-  observations?: string;
+  observations: string;
 };
 
 export const CreateCertificateSchema = z.strictObject({
@@ -20,13 +20,6 @@ export const CreateCertificateSchema = z.strictObject({
       err.input === undefined
         ? ErrorCodes.validation.certificate.employeeIdRequired
         : ErrorCodes.validation.certificate.employeeIdInvalid,
-  }),
-
-  issuedAt: z.iso.datetime({
-    error: (err) =>
-      err.input === undefined
-        ? ErrorCodes.validation.certificate.issuedAtRequired
-        : ErrorCodes.validation.certificate.issuedAtInvalid,
   }),
 
   days: z
@@ -50,7 +43,9 @@ export const CreateCertificateSchema = z.strictObject({
 
   observations: z
     .string({ error: ErrorCodes.validation.certificate.observationsMustBeString })
-    .max(maxObservationsLength, { error: ErrorCodes.validation.certificate.observationsTooLong })
-    .optional(),
+    .max(maxObservationsLength, { error: ErrorCodes.validation.certificate.observationsTooLong }),
 });
 export type CreateCertificateSchema = z.infer<typeof CreateCertificateSchema>;
+
+export const UpdateCertificateSchema = CreateCertificateSchema.omit({ employeeId: true }).partial();
+export type UpdateCertificateSchema = z.infer<typeof UpdateCertificateSchema>;

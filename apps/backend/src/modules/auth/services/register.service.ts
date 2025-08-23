@@ -42,7 +42,6 @@ export class RegisterService {
 
       return R.ok([{ id, name, email }, authCookie]);
     } catch (err) {
-      console.dir(err);
       const msg =
         err instanceof APIError
           ? `${ErrorCodes.domain.userCreation.databaseError}: ${err.message}`

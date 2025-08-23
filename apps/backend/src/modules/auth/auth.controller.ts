@@ -47,9 +47,7 @@ export class AuthController {
   ) {
     const result = await this.registerService.run(input);
     if (result.error) {
-      throw new HttpException(result.error.message, result.error.statusCode, {
-        cause: result.error,
-      });
+      throw result.error;
     }
 
     const [user, authCookie] = result.value;
@@ -66,9 +64,7 @@ export class AuthController {
   ) {
     const result = await this.loginService.run(input);
     if (result.error) {
-      throw new HttpException(result.error.message, result.error.statusCode, {
-        cause: result.error,
-      });
+      throw result.error;
     }
 
     const [user, authCookie] = result.value;

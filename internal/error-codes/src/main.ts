@@ -79,6 +79,18 @@ export const ErrorCodes = {
       databaseError: "domain.employeeUpdate.databaseError",
       activeInvalid: "domain.employeeUpdate.activeInvalid",
     },
+
+    certificate: {
+      notFound: "domain.certificate.notFound",
+      databaseError: "domain.certificate.databaseError",
+    },
+    certificateCreation: {
+      databaseError: "domain.certificateCreation.databaseError",
+      employeeNotFound: "domain.certificateCreation.employeeNotFound",
+    },
+    certificateUpdate: {
+      databaseError: "domain.employeeUpdate.databaseError",
+    },
   },
 } as const;
 export type ErrorCodes = typeof ErrorCodes;

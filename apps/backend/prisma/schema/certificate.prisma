@@ -1,0 +1,12 @@
+model Certificate {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId   String   @db.ObjectId
+  issuedAt     DateTime @default(now())
+  days         Int
+  cid          String
+  observations String
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@map("certificate")
+}

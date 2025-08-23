@@ -12,30 +12,30 @@ import {
   Post,
   UseGuards,
 } from "@nestjs/common";
-import { CreateEmployeeSchema, UpdateEmployeeSchema } from "@repo/schemas/employee";
-import { CreateEmployeeService } from "#/modules/employee/services/create-employee.service";
-import { DeleteEmployeeService } from "#/modules/employee/services/delete-employee.service";
-import { GetEmployeeService } from "#/modules/employee/services/get-employee.service";
-import { ListEmployeesService } from "#/modules/employee/services/list-employees.service";
-import { UpdateEmployeeService } from "#/modules/employee/services/update-employee.service";
+import { CreateCertificateSchema, UpdateCertificateSchema } from "@repo/schemas/certificate";
+import { CreateCertificateService } from "#/modules/certificate/services/create-certificate.service";
+import { DeleteCertificateService } from "#/modules/certificate/services/delete-certificate.service";
+import { GetCertificateService } from "#/modules/certificate/services/get-certificate.service";
+import { ListCertificatesService } from "#/modules/certificate/services/list-certificates.service";
+import { UpdateCertificateService } from "#/modules/certificate/services/update-certificate.service";
 import { AuthGuard } from "#/shared/guards/auth.guard";
 import { ZodValidator } from "#/shared/pipes/zod-validator.pipe";
 
-@Controller("employees")
+@Controller("certificates")
 @UseGuards(AuthGuard)
-export class EmployeeController {
-  @Inject(CreateEmployeeService) private readonly createService: CreateEmployeeService;
-  @Inject(GetEmployeeService) private readonly getService: GetEmployeeService;
-  @Inject(ListEmployeesService) private readonly listService: ListEmployeesService;
-  @Inject(UpdateEmployeeService) private readonly updateService: UpdateEmployeeService;
-  @Inject(DeleteEmployeeService) private readonly deleteService: DeleteEmployeeService;
+export class CertificateController {
+  @Inject(CreateCertificateService) private readonly createService: CreateCertificateService;
+  @Inject(GetCertificateService) private readonly getService: GetCertificateService;
+  @Inject(ListCertificatesService) private readonly listService: ListCertificatesService;
+  @Inject(UpdateCertificateService) private readonly updateService: UpdateCertificateService;
+  @Inject(DeleteCertificateService) private readonly deleteService: DeleteCertificateService;
 
   constructor(
-    createService: CreateEmployeeService,
-    getService: GetEmployeeService,
-    listService: ListEmployeesService,
-    updateService: UpdateEmployeeService,
-    deleteService: DeleteEmployeeService,
+    createService: CreateCertificateService,
+    getService: GetCertificateService,
+    listService: ListCertificatesService,
+    updateService: UpdateCertificateService,
+    deleteService: DeleteCertificateService,
   ) {
     this.createService = createService;
     this.getService = getService;
@@ -46,7 +46,7 @@ export class EmployeeController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body(new ZodValidator(CreateEmployeeSchema)) input: CreateEmployeeSchema) {
+  async create(@Body(new ZodValidator(CreateCertificateSchema)) input: CreateCertificateSchema) {
     const result = await this.createService.run(input);
     if (result.error) {
       throw result.error;
@@ -81,7 +81,7 @@ export class EmployeeController {
   @HttpCode(HttpStatus.OK)
   async update(
     @Param("id") id: string,
-    @Body(new ZodValidator(UpdateEmployeeSchema)) input: UpdateEmployeeSchema,
+    @Body(new ZodValidator(UpdateCertificateSchema)) input: UpdateCertificateSchema,
   ) {
     const result = await this.updateService.run(id, input);
     if (result.error) {
