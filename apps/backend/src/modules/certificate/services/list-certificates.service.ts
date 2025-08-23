@@ -30,12 +30,8 @@ export class ListCertificatesService {
       });
 
       const data = certificates.map((certificate) => ({
-        id: certificate.id,
-        employeeId: certificate.employeeId,
+        ...certificate,
         issuedAt: certificate.issuedAt.toISOString(),
-        days: certificate.days,
-        cid: certificate.cid,
-        observations: certificate.observations,
       }));
 
       return R.ok(new PaginatedResult<CertificateEntity>(totalItems, limit, page, data));

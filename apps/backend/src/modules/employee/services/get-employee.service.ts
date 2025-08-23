@@ -1,9 +1,12 @@
 import { HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import { type AsyncResult, R } from "@repo/result";
+import type { CertificateEntity } from "@repo/schemas/certificate";
 import type { EmployeeEntity } from "@repo/schemas/employee";
 import { AppError } from "#/app/app-error";
 import { PrismaProvider } from "#/global/providers/prisma.provider";
+
+type EmployeeWithCertificates = EmployeeEntity & { certificates: CertificateEntity[] };
 
 @Injectable()
 export class GetEmployeeService {
@@ -13,10 +16,11 @@ export class GetEmployeeService {
     this.prisma = prisma;
   }
 
-  async run(id: string): AsyncResult<EmployeeEntity, AppError> {
+  async run(id: string): AsyncResult<EmployeeWithCertificates, AppError> {
     try {
       const employee = await this.prisma.employee.findUnique({
         where: { id },
+        include: { certificates: true },
       });
 
       if (!employee) {
@@ -29,12 +33,12 @@ export class GetEmployeeService {
       }
 
       return R.ok({
-        id: employee.id,
-        name: employee.name,
-        cpf: employee.cpf,
+        ...employee,
         dateOfBirth: employee.dateOfBirth.toISOString(),
-        jobTitle: employee.jobTitle,
-        active: employee.active,
+        certificates: employee.certificates.map((cert) => ({
+          ...cert,
+          issuedAt: cert.issuedAt.toISOString(),
+        })),
       });
     } catch (err) {
       const error = new AppError(

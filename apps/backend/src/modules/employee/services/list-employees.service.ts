@@ -25,15 +25,16 @@ export class ListEmployeesService {
         where,
         skip: (page - 1) * limit,
         take: limit,
+        include: { certificates: true },
       });
 
       const data = employees.map((employee) => ({
-        id: employee.id,
-        name: employee.name,
-        cpf: employee.cpf,
+        ...employee,
         dateOfBirth: employee.dateOfBirth.toISOString(),
-        jobTitle: employee.jobTitle,
-        active: employee.active,
+        certificates: employee.certificates.map((cert) => ({
+          ...cert,
+          issuedAt: cert.issuedAt.toISOString(),
+        })),
       }));
 
       return R.ok(new PaginatedResult<EmployeeEntity>(totalItems, limit, page, data));

@@ -29,12 +29,8 @@ export class GetCertificateService {
       }
 
       return R.ok({
-        id: certificate.id,
-        employeeId: certificate.employeeId,
+        ...certificate,
         issuedAt: certificate.issuedAt.toISOString(),
-        days: certificate.days,
-        cid: certificate.cid,
-        observations: certificate.observations,
       });
     } catch (err) {
       const error = new AppError(
