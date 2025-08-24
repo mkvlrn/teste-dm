@@ -50,6 +50,8 @@ async function act(data: CreateUserSchema | LoginSchema, type: string): Promise<
     });
 
     return false;
+  } finally {
+    await mutate("/api/auth/me");
   }
 }
 
@@ -73,7 +75,6 @@ export function useLogin() {
       type === "registre" ? CreateUserSchema.parse(data) : LoginSchema.parse(data),
       type,
     );
-    await mutate("/api/auth/me");
 
     if (ok) {
       navigate("/");

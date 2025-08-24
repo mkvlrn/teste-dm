@@ -3,7 +3,7 @@
 
 /** navbar stuff */
 @utility navbar {
-  @apply h-[700px] w-full flex flex-col flex-1 p-md;
+  @apply h-[700px] w-full flex flex-col flex-1 p-md justify-between;
 }
 @utility menu-link-base {
   @apply cursor-pointer rounded-md p-2 my-2 font-medium text-sm flex items-center gap-x-1 w-full;
@@ -13,4 +13,7 @@
 }
 @utility menu-link-not-current {
   @apply bg-transparent text-white hover:bg-amber-100 hover:text-black;
+}
+@utility user-button {
+  @apply block w-full p-md bg-dark-900 hover:bg-amber-100 hover:text-black;
 }
