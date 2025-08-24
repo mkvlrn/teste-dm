@@ -3,7 +3,9 @@ import { useDisclosure } from "@mantine/hooks";
 import { Suspense } from "react";
 import { useLocation } from "wouter";
 import { usePages } from "#/app/use-pages";
+import { Loading } from "#/components/loading/loading";
 import { Navbar } from "#/components/navbar/navbar";
+import { NotFound } from "#/pages/not-found/not-found";
 
 export function App() {
   const [opened, { toggle }] = useDisclosure();
@@ -25,7 +27,7 @@ export function App() {
         <Navbar />
       </AppShell.Navbar>
       <AppShell.Main>
-        <Suspense fallback={<div>loading</div>}>{Page ? <Page /> : <div>not found</div>}</Suspense>
+        <Suspense fallback={<Loading />}>{Page ? <Page /> : <NotFound />}</Suspense>
       </AppShell.Main>
     </AppShell>
   );

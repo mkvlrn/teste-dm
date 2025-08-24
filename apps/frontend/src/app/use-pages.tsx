@@ -4,9 +4,6 @@ export function usePages() {
   const Inicio = lazy(() =>
     import("#/pages/inicio/inicio").then((module) => ({ default: module.Inicio })),
   );
-  const Login = lazy(() =>
-    import("#/pages/login/login").then((module) => ({ default: module.Login })),
-  );
   const Logout = lazy(() =>
     import("#/pages/logout/logout").then((module) => ({ default: module.Logout })),
   );
@@ -23,7 +20,6 @@ export function usePages() {
 
   const pages = new Map<string, ReturnType<typeof lazy>>([
     ["/", Inicio],
-    ["/login", Login],
     ["/logout", Logout],
     ["/colaboradores", Colaboradores],
     ["/atestados", Atestados],

@@ -1,15 +1,17 @@
 import { Avatar, Group, Text, UnstyledButton } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons-react";
+import { useLocation } from "wouter";
 import { useAuth } from "#/utils/user";
 
 export function UserButton() {
   const { user } = useAuth();
+  const [_, navigate] = useLocation();
 
   return (
     <>
       {!user && <span />}
       {user?.email && (
-        <UnstyledButton className="user-button">
+        <UnstyledButton className="user-button" onClick={() => navigate("/")}>
           <Group>
             <Avatar
               radius="xl"

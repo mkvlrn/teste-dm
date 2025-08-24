@@ -1,4 +1,4 @@
-import { IconHome, IconLogin, IconLogout, IconStethoscope, IconUsers } from "@tabler/icons-react";
+import { IconHome, IconLogout, IconStethoscope, IconUsers } from "@tabler/icons-react";
 import { useLocation } from "wouter";
 import { classNames } from "#/utils/class-names";
 import { useAuth } from "#/utils/user";
@@ -13,12 +13,6 @@ export function useLinks() {
       label: "Início",
       icon: IconHome,
       current: location === "/",
-    },
-    {
-      href: "/login",
-      label: "Login",
-      icon: IconLogin,
-      current: location === "/login",
     },
   ];
 
