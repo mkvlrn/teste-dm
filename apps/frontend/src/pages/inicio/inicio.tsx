@@ -1,3 +1,7 @@
+import { useAuth } from "#/utils/user";
+
 export function Inicio() {
-  return <div>inicio</div>;
+  const { user } = useAuth();
+
+  return user?.email ? <div className="w-full">hey</div> : <div>do login yo</div>;
 }

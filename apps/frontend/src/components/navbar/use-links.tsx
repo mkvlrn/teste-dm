@@ -1,12 +1,11 @@
 import { IconHome, IconLogin, IconLogout, IconStethoscope, IconUsers } from "@tabler/icons-react";
-import useSwr from "swr";
 import { useLocation } from "wouter";
-import { fetchUser } from "#/utils/api";
 import { classNames } from "#/utils/class-names";
+import { useAuth } from "#/utils/user";
 
 export function useLinks() {
   const [location, navigate] = useLocation();
-  const { data: user } = useSwr("/api/auth/me", fetchUser);
+  const { user } = useAuth();
 
   const unauthenticatedLinkData = [
     {

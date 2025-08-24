@@ -1,10 +1,9 @@
 import { Avatar, Group, Text, UnstyledButton } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons-react";
-import useSwr from "swr";
-import { fetchUser } from "#/utils/api";
+import { useAuth } from "#/utils/user";
 
 export function UserButton() {
-  const { data: user } = useSwr("/api/auth/me", fetchUser);
+  const { user } = useAuth();
 
   return (
     <>

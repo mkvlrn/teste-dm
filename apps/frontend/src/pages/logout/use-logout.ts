@@ -1,10 +1,9 @@
 import { notifications } from "@mantine/notifications";
-import useSwr from "swr";
 import { useLocation } from "wouter";
-import { fetchUser } from "#/utils/api";
+import { useAuth } from "#/utils/user";
 
 export function useLogout() {
-  const { data: user, mutate } = useSwr("/api/auth/me", fetchUser);
+  const { user, mutate } = useAuth();
   const [_, navigate] = useLocation();
 
   async function handleLogout() {

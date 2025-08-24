@@ -1,3 +1,8 @@
+import { Unauthorized } from "#/pages/unauthorized/unauthorized";
+import { useAuth } from "#/utils/user";
+
 export function Colaboradores() {
-  return <div>colaboradores</div>;
+  const { user } = useAuth();
+
+  return user?.email ? <div className="w-full">colaboradores</div> : <Unauthorized />;
 }
