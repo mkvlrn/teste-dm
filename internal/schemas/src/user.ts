@@ -12,7 +12,7 @@ export type UserEntity = {
   email: string;
 };
 
-export const CreateUserSchema = z.strictObject({
+export const CreateUserSchema = z.object({
   name: z
     .string({
       error: (err) =>
@@ -43,7 +43,7 @@ export const CreateUserSchema = z.strictObject({
 });
 export type CreateUserSchema = z.infer<typeof CreateUserSchema>;
 
-export const LoginSchema = z.strictObject({
+export const LoginSchema = z.object({
   ...CreateUserSchema.omit({ name: true }).shape,
 
   password: z.string({

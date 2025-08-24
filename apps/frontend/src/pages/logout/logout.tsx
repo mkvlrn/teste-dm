@@ -1,3 +1,7 @@
+import { useLogout } from "#/pages/logout/use-logout";
+
 export function Logout() {
-  return <div>Logout</div>;
+  const { user } = useLogout();
+
+  return user ? <div>Logout</div> : <div>???</div>;
 }

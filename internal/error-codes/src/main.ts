@@ -117,5 +117,9 @@ export const ErrorCodes = {
       codeErrorResponse: "domain.who.codeErrorResponse",
     },
   },
+
+  ui: {
+    loginFailed: "ui.loginFailed",
+  },
 } as const;
 export type ErrorCodes = typeof ErrorCodes;
