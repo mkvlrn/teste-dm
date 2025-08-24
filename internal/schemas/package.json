@@ -21,7 +21,18 @@
     "./query": {
       "types": "./build/query.d.ts",
       "default": "./build/query.js"
+    },
+    "./who": {
+      "types": "./build/who.d.ts",
+      "default": "./build/who.js"
     }
+  },
+  "biome": {
+    "type": "module",
+    "files": {
+      "build": "./build"
+    },
+    "externals": {}
   },
   "scripts": {
     "build": "vite build",

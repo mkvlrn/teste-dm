@@ -3,9 +3,10 @@ import { GlobalModule } from "#/global/global.module";
 import { AuthModule } from "#/modules/auth/auth.module";
 import { CertificateModule } from "#/modules/certificate/certificate.module";
 import { EmployeeModule } from "#/modules/employee/employee.module";
+import { WhoModule } from "#/modules/who/who.module";
 
 @Module({
-  imports: [GlobalModule, AuthModule, EmployeeModule, CertificateModule],
+  imports: [GlobalModule, AuthModule, EmployeeModule, CertificateModule, WhoModule],
   exports: [],
   providers: [],
   controllers: [],

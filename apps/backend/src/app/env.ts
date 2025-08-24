@@ -13,6 +13,7 @@ const schema = z.object({
   betterAuthSessionUpdateAge: z.coerce.number(),
   betterAuthCookiePrefix: z.string(),
   mongodbUrl: z.url(),
+  redisUrl: z.url(),
 });
 
 const parsedEnv = schema.safeParse(process.env);

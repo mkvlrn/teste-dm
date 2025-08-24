@@ -104,6 +104,18 @@ export const ErrorCodes = {
     certificateQuery: {
       employeeIdInvalid: "domain.certificateQuery.employeeIdInvalid",
     },
+
+    who: {
+      tokenFetchError: "domain.who.tokenFetchError",
+
+      searchIsRequired: "domain.who.searchIsRequired",
+      searchInvalid: "domain.who.searchInvalid",
+      searchResponseInvalid: "domain.who.searchResponseInvalid",
+
+      codeIsRequired: "domain.who.codeIsRequired",
+      codeInvalid: "domain.who.codeInvalid",
+      codeErrorResponse: "domain.who.codeErrorResponse",
+    },
   },
 } as const;
 export type ErrorCodes = typeof ErrorCodes;
