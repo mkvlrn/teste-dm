@@ -4,10 +4,9 @@ WORKDIR /src
 COPY package*.json ./
 COPY apps/backend/package.json ./apps/backend/
 COPY internal/ ./internal/
-COPY turbo.json ./turbo.json
+COPY turbo.json ./
 RUN npm pkg delete scripts.prepare
 RUN npm ci
-WORKDIR /src
 COPY apps/backend ./apps/backend
 WORKDIR /src/apps/backend
 RUN npx prisma generate

@@ -7,6 +7,7 @@ import { env } from "#/app/env";
 import { AppErrorFilter } from "#/shared/filters/app-error.filter";
 
 const app = await NestFactory.create(AppModule);
+app.enableCors();
 app.useGlobalFilters(new AppErrorFilter());
 
 process.on("SIGTERM", async () => {
