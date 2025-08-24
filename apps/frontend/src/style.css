@@ -1,1 +1,16 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: tailwind */
 @import "tailwind-preset-mantine";
+
+/** navbar stuff */
+@utility navbar {
+  @apply h-[700px] w-full flex flex-col flex-1 p-md;
+}
+@utility menu-link-base {
+  @apply cursor-pointer rounded-md p-2 my-2 font-medium text-sm flex items-center gap-x-1 w-full;
+}
+@utility menu-link-current {
+  @apply bg-dark-900 text-white;
+}
+@utility menu-link-not-current {
+  @apply bg-transparent text-white hover:bg-amber-100 hover:text-black;
+}

@@ -43,8 +43,11 @@
     "@repo/error-codes": "*",
     "@repo/result": "*",
     "@repo/schemas": "*",
+    "@tabler/icons-react": "^3.34.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwind-preset-mantine": "^2.1.0"
+    "swr": "^2.3.6",
+    "tailwind-preset-mantine": "^2.1.0",
+    "wouter": "^3.7.1"
   }
 }
