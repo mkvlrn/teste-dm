@@ -1,7 +1,7 @@
 import { Button, Checkbox, Group, Paper, type PaperProps, Stack, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import type { EmployeeEntity } from "@repo/schemas/employee";
-import { useEmployee } from "#/pages/colaboradores/use-employee";
+import { useEmployee } from "#/pages/employees/use-employee";
 
 type ModalProps = {
   employee?: EmployeeEntity;

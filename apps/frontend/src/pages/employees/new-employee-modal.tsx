@@ -1,7 +1,7 @@
 import { ActionIcon, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconPlus } from "@tabler/icons-react";
-import { EmployeeForm } from "#/pages/colaboradores/employee-form";
+import { EmployeeForm } from "#/pages/employees/employee-form";
 
 export function NewEmployeeModal({ cacheKey }: { cacheKey: string }) {
   const [opened, { open, close }] = useDisclosure(false);

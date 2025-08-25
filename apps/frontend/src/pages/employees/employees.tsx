@@ -4,13 +4,13 @@ import { useState } from "react";
 import useSwr from "swr";
 import { Loading } from "#/components/loading/loading";
 import { PageContainer } from "#/components/page-container/page-container";
-import { EditEmployeeModal } from "#/pages/colaboradores/edit-employee-modal";
-import { NewEmployeeModal } from "#/pages/colaboradores/new-employee-modal";
+import { EditEmployeeModal } from "#/pages/employees/edit-employee-modal";
+import { NewEmployeeModal } from "#/pages/employees/new-employee-modal";
 import { Unauthorized } from "#/pages/unauthorized/unauthorized";
 import { fetchEmployeess } from "#/utils/api";
 import { useAuth } from "#/utils/user";
 
-export function Colaboradores() {
+export function Employees() {
   const { user } = useAuth();
   const [page, setPage] = useState(1);
   const [active, setActive] = useState<"all" | "true" | "false">("all");
