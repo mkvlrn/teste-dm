@@ -19,5 +19,7 @@ jobs:
           cache: "yarn"
       - run: yarn install --frozen-lockfile
       - run: |
+          yarn build
+          yarn typecheck
           yarn biome-check
           yarn test
