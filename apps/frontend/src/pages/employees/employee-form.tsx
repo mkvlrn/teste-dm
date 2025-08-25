@@ -1,17 +1,17 @@
 import { Button, Checkbox, Group, Paper, type PaperProps, Stack, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import type { EmployeeEntity } from "@repo/schemas/employee";
-import { useEmployee } from "#/pages/employees/use-employee";
+import { useEmployeeModal } from "#/pages/employees/use-employee-modal";
 
-type ModalProps = {
+interface ModalProps extends PaperProps {
   employee?: EmployeeEntity;
-  cacheKey: string;
-  close: () => void;
-};
+  cachekey: string;
+  closemodal: () => void;
+}
 
 // biome-ignore lint/complexity/noExcessiveLinesPerFunction: <explanation>
-export function EmployeeForm(props: PaperProps & ModalProps) {
-  const { form, handleSubmit } = useEmployee(props.cacheKey, props.close, props.employee);
+export function EmployeeForm(props: ModalProps) {
+  const { form, handleSubmit } = useEmployeeModal(props.cachekey, props.closemodal, props.employee);
 
   return (
     <div className="flex justify-center">
@@ -23,7 +23,7 @@ export function EmployeeForm(props: PaperProps & ModalProps) {
         withBorder={true}
         {...props}
       >
-        <form onReset={form.onReset} onSubmit={form.onSubmit(handleSubmit, (v) => console.log(v))}>
+        <form onReset={form.onReset} onSubmit={form.onSubmit(handleSubmit)}>
           <Stack>
             <TextInput
               error={form.errors["name"] ?? null}

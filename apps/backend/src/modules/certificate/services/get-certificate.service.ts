@@ -17,6 +17,7 @@ export class GetCertificateService {
     try {
       const certificate = await this.prisma.certificate.findUnique({
         where: { id },
+        include: { employee: true },
       });
 
       if (!certificate) {

@@ -1,24 +1,17 @@
-import { Pagination, ScrollArea, SegmentedControl, Table } from "@mantine/core";
+import { Pagination, ScrollArea, SegmentedControl, Table, TextInput } from "@mantine/core";
 import { IconCheck, IconX } from "@tabler/icons-react";
-import { useState } from "react";
-import useSwr from "swr";
 import { Loading } from "#/components/loading/loading";
 import { PageContainer } from "#/components/page-container/page-container";
 import { EditEmployeeModal } from "#/pages/employees/edit-employee-modal";
 import { NewEmployeeModal } from "#/pages/employees/new-employee-modal";
+import { useEmployees } from "#/pages/employees/use-employees";
 import { Unauthorized } from "#/pages/unauthorized/unauthorized";
-import { fetchEmployeess } from "#/utils/api";
 import { useAuth } from "#/utils/user";
 
 export function Employees() {
   const { user } = useAuth();
-  const [page, setPage] = useState(1);
-  const [active, setActive] = useState<"all" | "true" | "false">("all");
-  const {
-    data: employees,
-    error,
-    isLoading,
-  } = useSwr(`/api/employees?page=${page}&active=${active}`, fetchEmployeess);
+  const { error, employees, isLoading, page, setPage, active, setActive, q, setQ, filterRef } =
+    useEmployees();
 
   if (!user?.email) {
     return <Unauthorized />;
@@ -40,7 +33,10 @@ export function Employees() {
       <Table.Td>{new Date(e.dateOfBirth).toLocaleDateString()}</Table.Td>
       <Table.Td>{e.active ? <IconCheck /> : <IconX />}</Table.Td>
       <Table.Td>
-        <EditEmployeeModal cacheKey={`/api/employees?page=${page}&active=${active}`} employee={e} />
+        <EditEmployeeModal
+          cacheKey={`/api/employees?q=${q}&page=${page}&active=${active}`}
+          employee={e}
+        />
       </Table.Td>
     </Table.Tr>
   ));
@@ -58,8 +54,14 @@ export function Employees() {
           onChange={(value) => setActive(value as "all" | "true" | "false")}
           value={active}
         />
+        <TextInput
+          defaultValue={q}
+          label="Filtro (Nome, CPF, Cargo)"
+          onChange={(event) => setQ(event.currentTarget.value)}
+          ref={filterRef}
+        />
       </div>
-      <NewEmployeeModal cacheKey={`/api/employees?page=${page}&active=${active}`} />
+      <NewEmployeeModal cacheKey={`/api/employees?q=${q}&page=${page}&active=${active}`} />
       {isLoading && <Loading />}
       {!isLoading && (
         <ScrollArea>

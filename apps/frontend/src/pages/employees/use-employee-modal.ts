@@ -63,7 +63,7 @@ async function act(
   }
 }
 
-export function useEmployee(cacheKey: string, close: () => void, employee?: EmployeeEntity) {
+export function useEmployeeModal(cacheKey: string, close: () => void, employee?: EmployeeEntity) {
   const form = useForm({
     initialValues: {
       name: employee?.name ?? "",

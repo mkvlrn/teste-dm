@@ -9,7 +9,7 @@ export function NewEmployeeModal({ cacheKey }: { cacheKey: string }) {
   return (
     <>
       <Modal onClose={close} opened={opened} title="Novo colaborador">
-        <EmployeeForm cacheKey={cacheKey} close={close} />
+        <EmployeeForm cachekey={cacheKey} closemodal={close} />
       </Modal>
 
       <ActionIcon onClick={open} size="md" title="Adicionar colaborador" variant="light">

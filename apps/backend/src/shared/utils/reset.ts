@@ -6,6 +6,7 @@ import { generate } from "@fnando/cpf";
 import type { CreateCertificateSchema } from "@repo/schemas/certificate";
 import type { CreateEmployeeSchema } from "@repo/schemas/employee";
 import { PrismaClient } from "#/generated/prisma/client";
+import type { CertificateUncheckedCreateInput } from "#/generated/prisma/models";
 import { auth } from "#/shared/utils/auth";
 
 const howManyEmployees = 100;
@@ -16,8 +17,11 @@ const prisma = new PrismaClient();
 // drop all
 try {
   await prisma.$runCommandRaw({ delete: "verification", deletes: [{ q: {}, limit: 0 }] });
+  await prisma.$runCommandRaw({ delete: "account", deletes: [{ q: {}, limit: 0 }] });
+  await prisma.$runCommandRaw({ delete: "session", deletes: [{ q: {}, limit: 0 }] });
   await prisma.$runCommandRaw({ delete: "user", deletes: [{ q: {}, limit: 0 }] });
   await prisma.$runCommandRaw({ delete: "employee", deletes: [{ q: {}, limit: 0 }] });
+  await prisma.$runCommandRaw({ delete: "certificate", deletes: [{ q: {}, limit: 0 }] });
 } catch (err) {
   console.error((err as Error).message);
   process.exit(1);
@@ -53,7 +57,7 @@ await prisma.employee.updateMany({
 });
 
 // create certificates
-const certificates: CreateCertificateSchema[] = [];
+const certificates: CertificateUncheckedCreateInput[] = [];
 const withCertificateCount = Math.floor(createdEmployees.length * withCertificatePercent);
 const secondShuffle = [...createdEmployees].sort(() => Math.random() - 0.5);
 const employeesWithCertificate = secondShuffle.slice(0, withCertificateCount);
@@ -61,6 +65,7 @@ for (const employee of employeesWithCertificate) {
   const certificateCount = faker.number.int({ min: 1, max: 3 });
   for (let i = 0; i < certificateCount; i++) {
     certificates.push({
+      issuedAt: faker.date.past().toISOString(),
       employeeId: employee.id,
       days: faker.number.int({ min: 1, max: 365 }),
       cid: faker.string.numeric({ length: 7 }),

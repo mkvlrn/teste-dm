@@ -16,7 +16,7 @@ export function EditEmployeeModal({
   return (
     <>
       <Modal onClose={close} opened={opened} title={`Editar ${employee.name} `}>
-        <EmployeeForm cacheKey={cacheKey} close={close} employee={employee} />
+        <EmployeeForm cachekey={cacheKey} closemodal={close} employee={employee} />
       </Modal>
 
       <ActionIcon onClick={open} size="xs" variant="outline">

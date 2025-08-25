@@ -27,6 +27,7 @@ export class ListCertificatesService {
         where,
         skip: (page - 1) * limit,
         take: limit,
+        include: { employee: true },
       });
 
       const data = certificates.map((certificate) => ({
@@ -48,14 +49,15 @@ export class ListCertificatesService {
   private parseQuery(query: CertificateQuerySchema): Prisma.CertificateWhereInput {
     const where: Prisma.CertificateWhereInput = {};
 
-    if (query.employeeId) {
+    if (query.employeeId && query.employeeId.length > 0) {
       where.employeeId = query.employeeId;
     }
 
-    if (query.q) {
+    if (query.q && query.q.length > 0) {
       where.OR = [
         { cid: { contains: query.q, mode: "insensitive" } },
         { observations: { contains: query.q, mode: "insensitive" } },
+        { employee: { name: { contains: query.q, mode: "insensitive" } } },
       ];
     }
 
