@@ -1,5 +1,6 @@
 import "#/style.css";
 import "@mantine/notifications/styles.css";
+import "@mantine/dates/styles.css";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { StrictMode } from "react";

@@ -16,7 +16,7 @@ export type EmployeeEntity = {
   active: boolean;
 };
 
-export const CreateEmployeeSchema = z.strictObject({
+export const CreateEmployeeSchema = z.object({
   name: z
     .string({
       error: (err) =>
@@ -55,7 +55,7 @@ export const CreateEmployeeSchema = z.strictObject({
 });
 export type CreateEmployeeSchema = z.infer<typeof CreateEmployeeSchema>;
 
-export const UpdateEmployeeSchema = z.strictObject({
+export const UpdateEmployeeSchema = z.object({
   ...CreateEmployeeSchema.partial().shape,
   active: z.boolean({ error: ErrorCodes.domain.employeeUpdate.activeInvalid }).optional(),
 });
