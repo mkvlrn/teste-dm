@@ -1,6 +1,6 @@
 {
   "name": "@apps/backend",
-  "private": true,
+  "version": "1.0.0",
   "type": "module",
   "engines": {
     "node": "24.x"
@@ -12,7 +12,7 @@
     "test": "vitest",
     "test-e2e": "vitest --config ./e2e/vite.config.ts",
     "biome-check": "biome check --no-errors-on-unmatched",
-    "biome-fix": "npm run biome-check --write",
+    "biome-fix": "yarn biome-check --write",
     "typecheck": "tsc --noEmit",
     "reset-data": "tsx --env-file-if-exists=.env src/shared/utils/reset.ts"
   },

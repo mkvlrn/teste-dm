@@ -13,8 +13,8 @@ Aplicação disponível em http://localhost:8080
 ### docker compose pra bancos, node pra backend/frontend
 
 ```bash
-npm install
-npm run dev
+yarn install
+yarn dev
 docker compose up mongodb redis
 ```
 
@@ -56,7 +56,7 @@ Espero que não perca muitos pontos só por isso. Gostaria de repassar o projeto
 ### Requisitos
 
 - node 22+, dev com 24.6.0
-- npm 10+, dev com 11.5.2
+- yarn 1, dev com 1.22.22
 - docker, dev com 28.3.3
 - docker compose, dev com 2.39.2
 - não sei se roda 100% em windows, não há nada específico de linux no repo

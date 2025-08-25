@@ -1,15 +1,15 @@
 FROM node:alpine AS builder
 
 WORKDIR /src
-COPY package*.json ./
+COPY package.json ./
+COPY yarn.lock ./
 COPY apps/frontend/package.json ./apps/frontend/
 COPY internal/ ./internal/
 COPY turbo.json ./
 RUN npm pkg delete scripts.prepare
-RUN npm ci
-RUN npm i lightningcss
+RUN yarn install --frozen-lockfile
 COPY apps/frontend ./apps/frontend
-RUN npx turbo build
+RUN yarn build
 
 FROM nginx:alpine AS final
 

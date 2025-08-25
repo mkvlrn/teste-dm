@@ -1,6 +1,6 @@
 {
   "name": "@repo/schemas",
-  "private": true,
+  "version": "1.0.0",
   "type": "module",
   "engines": {
     "node": "24.x"
@@ -39,7 +39,7 @@
     "dev": "vite build && chokidar 'src' -c 'vite build'",
     "test": "vitest",
     "biome-check": "biome check --no-errors-on-unmatched",
-    "biome-fix": "npm run biome-check --write",
+    "biome-fix": "yarn biome-check --write",
     "typecheck": "tsc --noEmit",
     "lint-staged": "lint-staged"
   },

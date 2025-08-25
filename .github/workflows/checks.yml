@@ -19,5 +19,6 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: |
-          npm run biome-check
-          npm test
+          yarn typecheck
+          yarn biome-check
+          yarn test

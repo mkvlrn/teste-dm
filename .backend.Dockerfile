@@ -1,26 +1,28 @@
 FROM node:alpine AS builder
 
 WORKDIR /src
-COPY package*.json ./
+COPY package.json ./
+COPY yarn.lock ./
 COPY apps/backend/package.json ./apps/backend/
 COPY internal/ ./internal/
 COPY turbo.json ./
 RUN npm pkg delete scripts.prepare
-RUN npm ci
+RUN yarn install --frozen-lockfile
 COPY apps/backend ./apps/backend
 WORKDIR /src/apps/backend
 RUN npx prisma generate
 WORKDIR /src
-RUN npx turbo build
+RUN yarn build
 
 FROM node:alpine AS final
 
 WORKDIR /app
-COPY --from=builder /src/package*.json ./
+COPY --from=builder /src/package.json ./
+COPY --from=builder /src/yarn.lock ./
 COPY --from=builder /src/apps/backend/package.json ./apps/backend/
 COPY --from=builder /src/node_modules/@repo ./node_modules/@repo
 COPY --from=builder /src/internal/ ./internal/
-RUN npm ci --omit=dev --workspace=apps/backend
+RUN yarn install --frozen-lockfile --omit=dev --workspace=apps/backend
 COPY --from=builder /src/apps/backend/build ./apps/backend/build
 COPY --from=builder /src/apps/backend/src/generated/prisma/*.node ./apps/backend/build/generated/prisma/
 
