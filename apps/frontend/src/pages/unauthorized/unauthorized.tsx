@@ -1,3 +1,5 @@
+import { PageContainer } from "#/components/page-container/page-container";
+
 export function Unauthorized() {
-  return <div>Unauthorized</div>;
+  return <PageContainer title="403">nope</PageContainer>;
 }

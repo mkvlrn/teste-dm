@@ -1,3 +1,5 @@
+import { PageContainer } from "#/components/page-container/page-container";
+
 export function NotFound() {
-  return <div>not found</div>;
+  return <PageContainer title="404">???</PageContainer>;
 }
