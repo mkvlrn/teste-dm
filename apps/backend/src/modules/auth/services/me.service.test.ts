@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/complexity/noExcessiveLinesPerFunction: huge describe */
 import type { IncomingHttpHeaders } from "node:http";
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";

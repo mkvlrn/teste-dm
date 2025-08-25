@@ -119,6 +119,7 @@ export class SearchService {
 
   private async getTokenFromApi(): AsyncResult<[string, number], AppError> {
     const response = await this.axiosAuth.post<WhoAuthSchema>("", {
+      // biome-ignore lint/style/useNamingConvention: api expects this
       grant_type: "client_credentials",
       scope: "icdapi_access",
     });

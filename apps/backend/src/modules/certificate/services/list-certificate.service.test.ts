@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/complexity/noExcessiveLinesPerFunction: big describe */
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import type { CertificateQuerySchema } from "@repo/schemas/query";

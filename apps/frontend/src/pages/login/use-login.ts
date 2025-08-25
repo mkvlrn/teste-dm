@@ -81,9 +81,5 @@ export function useLogin() {
     }
   }
 
-  function handleError(error: unknown) {
-    console.log("yooo", error);
-  }
-
-  return { form, type, toggle, handleSubmit, handleError };
+  return { form, type, toggle, handleSubmit };
 }

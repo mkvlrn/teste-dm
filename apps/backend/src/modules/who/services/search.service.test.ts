@@ -1,6 +1,3 @@
-/** biome-ignore-all lint/complexity/noExcessiveLinesPerFunction: big describe */
-/** biome-ignore-all lint/complexity/useLiteralKeys: strict ts */
-/** biome-ignore-all lint/style/useNamingConvention: lots of underline_in_vars */
 import type { Cache } from "@nestjs/cache-manager";
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
@@ -162,6 +159,7 @@ describe("SearchService", () => {
       mockCacheManager.get.mockResolvedValue(null);
       mockAxiosAuth.post.mockResolvedValue({
         status: HttpStatus.OK,
+        // biome-ignore lint/style/useNamingConvention: it's the api format
         data: { access_token: mockNewToken, expires_in: mockExpiresIn, token_type: "Bearer" },
       });
 

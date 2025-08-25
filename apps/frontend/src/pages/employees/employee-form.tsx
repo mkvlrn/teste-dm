@@ -9,7 +9,6 @@ interface ModalProps extends PaperProps {
   closemodal: () => void;
 }
 
-// biome-ignore lint/complexity/noExcessiveLinesPerFunction: <explanation>
 export function EmployeeForm(props: ModalProps) {
   const { form, handleSubmit } = useEmployeeModal(props.cachekey, props.closemodal, props.employee);
 

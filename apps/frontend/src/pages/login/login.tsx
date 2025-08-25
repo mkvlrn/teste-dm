@@ -15,7 +15,7 @@ import { PageContainer } from "#/components/page-container/page-container";
 import { useLogin } from "#/pages/login/use-login";
 
 export function Login(props: PaperProps) {
-  const { form, type, toggle, handleSubmit, handleError } = useLogin();
+  const { form, type, toggle, handleSubmit } = useLogin();
 
   return (
     <PageContainer title="Hey!">
@@ -32,7 +32,7 @@ export function Login(props: PaperProps) {
             {type} com seu email
           </Text>
 
-          <form onReset={form.onReset} onSubmit={form.onSubmit(handleSubmit, handleError)}>
+          <form onReset={form.onReset} onSubmit={form.onSubmit(handleSubmit)}>
             <Stack>
               {type === "registre" && (
                 <TextInput

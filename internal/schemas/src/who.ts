@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: api forces this naming convention */
 import { ErrorCodes } from "@repo/error-codes";
 import { z } from "zod";
 

@@ -3,7 +3,6 @@
 import process from "node:process";
 import { faker } from "@faker-js/faker";
 import { generate } from "@fnando/cpf";
-import type { CreateCertificateSchema } from "@repo/schemas/certificate";
 import type { CreateEmployeeSchema } from "@repo/schemas/employee";
 import { PrismaClient } from "#/generated/prisma/client";
 import type { CertificateUncheckedCreateInput } from "#/generated/prisma/models";

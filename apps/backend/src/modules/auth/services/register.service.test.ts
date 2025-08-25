@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/complexity/noExcessiveLinesPerFunction: describes are HUGE */
 import { HttpStatus } from "@nestjs/common";
 import { ErrorCodes } from "@repo/error-codes";
 import type { CreateUserSchema } from "@repo/schemas/user";

@@ -23,7 +23,6 @@ interface ModalProps extends PaperProps {
   closemodal: () => void;
 }
 
-// biome-ignore lint/complexity/noExcessiveLinesPerFunction: <explanation>
 export function CertificateForm(props: ModalProps) {
   const { form, handleSubmit } = useCertificateModal(props.closemodal, props.certificate);
   const [cidSearchMethod, setCidSearchMethod] = useState<"cid" | "term">("cid");
@@ -39,10 +38,7 @@ export function CertificateForm(props: ModalProps) {
         withBorder={true}
         {...props}
       >
-        <form
-          onReset={form.onReset}
-          onSubmit={form.onSubmit(handleSubmit, (err) => console.log(err, form.values))}
-        >
+        <form onReset={form.onReset} onSubmit={form.onSubmit(handleSubmit)}>
           <Stack>
             {/* @ts-expect-error typing mismatch */}
             <Select

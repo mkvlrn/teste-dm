@@ -1,5 +1,4 @@
 /** biome-ignore-all lint/correctness/noNodejsModules: fine for backend */
-/** biome-ignore-all lint/suspicious/noConsole: clean msg out instead of throw */
 import process from "node:process";
 import { z } from "zod";
 
@@ -25,6 +24,7 @@ if (parsedEnv.error) {
   });
 
   const msg = `Validation of environment variables failed:\n${issueSummaries.join("\n")}\nCheck your environment.`;
+  // biome-ignore lint/suspicious/noConsole: fine in here
   console.error(msg);
   process.exit(1);
 }

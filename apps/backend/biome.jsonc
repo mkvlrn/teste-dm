@@ -11,5 +11,30 @@
       "!**/coverage/**/*",
       "!**/src/generated/**/*"
     ]
-  }
+  },
+  "overrides": [
+    {
+      // test files, config files, and some scripts
+      // export defaults from them, and also import from node
+      "includes": ["**/*.config.ts", "**/*.test.ts"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "useLiteralKeys": "off"
+          },
+          "correctness": {
+            "noNodejsModules": "off"
+          },
+          "style": {
+            "noDefaultExport": "off",
+            "noMagicNumbers": "off",
+            "noNonNullAssertion": "off"
+          },
+          "performance": {
+            "useTopLevelRegex": "off"
+          }
+        }
+      }
+    }
+  ]
 }
