@@ -27,7 +27,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@playwright/test": "^1.55.0",
     "@repo/configs": "*",
     "husky": "^9.1.7",
     "turbo": "^2.5.6"
