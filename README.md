@@ -25,7 +25,7 @@ Aplicação disponível em http://localhost:3000
 ### testes
 
 ```bash
-npm test
+yarn test
 ```
 
 ## Contexto
