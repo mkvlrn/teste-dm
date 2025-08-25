@@ -44,6 +44,7 @@ export function CertificateForm(props: ModalProps) {
           onSubmit={form.onSubmit(handleSubmit, (err) => console.log(err, form.values))}
         >
           <Stack>
+            {/* @ts-expect-error typing mismatch */}
             <Select
               clearable={true}
               data={employees?.map((e) => ({ label: e.name, value: e.id }))}
@@ -53,14 +54,13 @@ export function CertificateForm(props: ModalProps) {
                 return search ? fuse.search(search).map((r) => r.item) : options;
               }}
               label="Colaborador"
-              onChange={(v) => form.setFieldValue("employeeId", v)}
+              onChange={(v) => form.setFieldValue("employeeId", v!)}
               placeholder="nome do colaborador"
               radius="md"
               required={true}
               searchable={true}
               value={form.values.employeeId}
             />
-
             <NumberInput
               label="Dias"
               max={365}
@@ -69,7 +69,6 @@ export function CertificateForm(props: ModalProps) {
               onChange={(v) => form.setFieldValue("days", Number(v))}
               value={form.values.days}
             />
-
             <Radio.Group
               className="cursor-pointer"
               label="Forma de busca de sintoma"
@@ -85,7 +84,6 @@ export function CertificateForm(props: ModalProps) {
                 <Radio className="cursor-pointer" label="Livre" value="term" />
               </Group>
             </Radio.Group>
-
             <Group>
               <CidSearchByCode
                 display={cidSearchMethod === "cid" ? "block" : "none"}

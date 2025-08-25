@@ -3,6 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Suspense } from "react";
 import { useLocation } from "wouter";
 import { usePages } from "#/app/use-pages";
+import { Header } from "#/components/header/header";
 import { Loading } from "#/components/loading/loading";
 import { Navbar } from "#/components/navbar/navbar";
 import { NotFound } from "#/pages/not-found/not-found";
@@ -21,7 +22,7 @@ export function App() {
     >
       <AppShell.Header>
         <Burger hiddenFrom="sm" onClick={toggle} opened={opened} size="sm" />
-        <div>Logo</div>
+        <Header />
       </AppShell.Header>
       <AppShell.Navbar>
         <Navbar />
