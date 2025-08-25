@@ -10,6 +10,8 @@ docker compose up
 
 Aplicação disponível em http://localhost:8080
 
+Nesse compose um seed roda toda vez que é iniciado, criando um usuário (email: admin@admin.com, senha: admin), 100 colaboradores, e um número variável de atestados.
+
 ### docker compose pra bancos, node pra backend/frontend
 
 ```bash
