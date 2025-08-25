@@ -1,125 +1,126 @@
 export const ErrorCodes = {
   validation: {
-    default: "validation.default",
+    default: "Erro de validação",
     user: {
-      nameRequired: "validation.user.nameRequired",
-      nameMustBeString: "validation.user.nameMustBeString",
-      nameTooShort: "validation.user.nameTooShort",
-      nameTooLong: "validation.user.nameTooLong",
+      nameRequired: "Nome é campo obrigatório",
+      nameMustBeString: "Nome deve ser do tipo texto",
+      nameTooShort: "Nome é muito curto",
+      nameTooLong: "Nome é muito longo",
 
-      emailRequired: "validation.user.emailRequired",
-      emailInvalid: "validation.user.emailInvalid",
-      emailTooLong: "validation.email.emailTooLong",
+      emailRequired: "E-mail é campo obrigatório",
+      emailInvalid: "E-mail inválido",
+      emailTooLong: "E-mail é muito longo",
 
-      passwordRequired: "validation.password.passwordRequired",
-      passwordMustBeString: "validation.password.passwordMustBeString",
-      passwordInvalid: "validation.password.passwordInvalid",
+      passwordRequired: "Senha é campo obrigatório",
+      passwordMustBeString: "Senha deve ser do tipo texto",
+      passwordInvalid:
+        "Senha inválida (mínimo de 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial - !@#$%)",
     },
 
     employee: {
-      nameRequired: "validation.employee.nameRequired",
-      nameMustBeString: "validation.employee.nameMustBeString",
-      nameTooShort: "validation.employee.nameTooShort",
-      nameTooLong: "validation.employee.nameTooLong",
+      nameRequired: "Nome é campo obrigatório",
+      nameMustBeString: "Nome deve ser do tipo texto",
+      nameTooShort: "Nome é muito curto",
+      nameTooLong: "Nome é muito longo",
 
-      cpfRequired: "validation.employee.cpfRequired",
-      cpfMustBeString: "validation.employee.cpfMustBeString",
-      cpfInvalid: "validation.employee.cpfInvalid",
+      cpfRequired: "CPF é campo obrigatório",
+      cpfMustBeString: "CPF deve ser do tipo texto",
+      cpfInvalid: "CPF inválido",
 
-      dobRequired: "validation.employee.dobRequired",
-      dobInvalid: "validation.employee.dobInvalid",
+      dobRequired: "Data de nascimento é campo obrigatório",
+      dobInvalid: "Data de nascimento inválida",
 
-      jobTitleRequired: "validation.employee.jobTitleRequired",
-      jobTitleMustBeString: "validation.employee.jobTitleMustBeString",
-      jobTitleTooShort: "validation.employee.jobTitleTooShort",
-      jobTitleTooLong: "validation.employee.jobTitleTooLong",
+      jobTitleRequired: "Cargo é campo obrigatório",
+      jobTitleMustBeString: "Cargo deve ser do tipo texto",
+      jobTitleTooShort: "Cargo é muito curto",
+      jobTitleTooLong: "Cargo é muito longo",
     },
 
     certificate: {
-      employeeIdRequired: "validation.certificate.employeeIdRequired",
-      employeeIdInvalid: "validation.certificate.employeeIdInvalid",
+      employeeIdRequired: "Colaborador é campo obrigatório",
+      employeeIdInvalid: "Colaborador inválido",
 
-      issuedAtRequired: "validation.certificate.issuedAtRequired",
-      issuedAtInvalid: "validation.certificate.issuedAtInvalid",
+      issuedAtRequired: "Data de emissão é campo obrigatório",
+      issuedAtInvalid: "Data de emissão inválida",
 
-      daysRequired: "validation.certificate.daysRequired",
-      daysInvalid: "validation.certificate.daysInvalid",
+      daysRequired: "Quantidade de dias é campo obrigatório",
+      daysInvalid: "Quantidade de dias inválida",
 
-      cidRequired: "validation.certificate.cidRequired",
-      cidMustBeString: "validation.certificate.cidMustBeString",
-      cidMustBeNumericString: "validation.certificate.cidMustBeNumericString",
+      cidRequired: "CID é campo obrigatório",
+      cidMustBeString: "CID deve ser do tipo texto",
+      cidMustBeNumericString: "CID deve conter apenas números",
 
-      observationsMustBeString: "validation.certificate.observationsMustBeString",
-      observationsTooLong: "validation.certificate.observationsTooLong",
+      observationsMustBeString: "Observações devem ser do tipo texto",
+      observationsTooLong: "Observações são muito longas",
     },
   },
 
   domain: {
     userCreation: {
-      emailAlreadyInUse: "domain.userCreation.emailAlreadyInUse",
-      databaseError: "domain.userCreation.databaseError",
-      couldNotCreateUser: "domain.userCreation.couldNotCreateUser",
+      emailAlreadyInUse: "E-mail já está em uso",
+      databaseError: "Erro no banco de dados",
+      couldNotCreateUser: "Não foi possível criar o usuário",
     },
 
     userAuth: {
-      logoutError: "domain.userAuth.logoutError",
-      noSession: "domain.userAuth.noSession",
+      logoutError: "Erro ao encerrar a sessão",
+      noSession: "Nenhuma sessão encontrada",
     },
 
     employee: {
-      notFound: "domain.employee.notFound",
-      databaseError: "domain.employee.databaseError",
+      notFound: "Colaborador não encontrado",
+      databaseError: "Erro no banco de dados",
     },
     employeeCreation: {
-      cpfAlreadyInUse: "domain.employeeCreation.cpfAlreadyInUse",
-      databaseError: "domain.employeeCreation.databaseError",
+      cpfAlreadyInUse: "CPF já está em uso",
+      databaseError: "Erro no banco de dados",
     },
     employeeUpdate: {
-      cpfAlreadyInUse: "domain.employeeUpdate.cpfAlreadyInUse",
-      databaseError: "domain.employeeUpdate.databaseError",
-      activeInvalid: "domain.employeeUpdate.activeInvalid",
+      cpfAlreadyInUse: "CPF já está em uso",
+      databaseError: "Erro no banco de dados",
+      activeInvalid: "Campo 'ativo' inválido",
     },
 
     certificate: {
-      notFound: "domain.certificate.notFound",
-      databaseError: "domain.certificate.databaseError",
+      notFound: "Atestado não encontrado",
+      databaseError: "Erro no banco de dados",
     },
     certificateCreation: {
-      databaseError: "domain.certificateCreation.databaseError",
-      employeeNotFound: "domain.certificateCreation.employeeNotFound",
+      databaseError: "Erro no banco de dados",
+      employeeNotFound: "Colaborador não encontrado",
     },
     certificateUpdate: {
-      databaseError: "domain.employeeUpdate.databaseError",
+      databaseError: "Erro no banco de dados",
     },
 
     query: {
-      qMustBestring: "domain.query.qMustBestring",
-      pageMustBePositiveNumber: "domain.query.pageMustBePositiveNumber",
-      limitMustBePositiveNumber: "domain.query.limitMustBePositiveNumber",
-      limitCannotExceed100: "domain.query.limitCannotExceed100",
+      qMustBestring: "Parâmetro de busca deve ser do tipo texto",
+      pageMustBePositiveNumber: "Página deve ser um número positivo",
+      limitMustBePositiveNumber: "Limite deve ser um número positivo",
+      limitCannotExceed100: "Limite não pode exceder 100",
     },
     employeeQuery: {
-      activeInvalid: "domain.employeeQuery.activeInvalid",
+      activeInvalid: "Campo 'ativo' inválido",
     },
     certificateQuery: {
-      employeeIdInvalid: "domain.certificateQuery.employeeIdInvalid",
+      employeeIdInvalid: "ID de colaborador inválido",
     },
 
     who: {
-      tokenFetchError: "domain.who.tokenFetchError",
+      tokenFetchError: "Falha ao obter token",
 
-      searchIsRequired: "domain.who.searchIsRequired",
-      searchInvalid: "domain.who.searchInvalid",
-      searchResponseInvalid: "domain.who.searchResponseInvalid",
+      searchIsRequired: "Busca é campo obrigatório",
+      searchInvalid: "Busca inválida",
+      searchResponseInvalid: "Resposta da busca inválida",
 
-      codeIsRequired: "domain.who.codeIsRequired",
-      codeInvalid: "domain.who.codeInvalid",
-      codeErrorResponse: "domain.who.codeErrorResponse",
+      codeIsRequired: "Código é campo obrigatório",
+      codeInvalid: "Código inválido",
+      codeErrorResponse: "Erro ao consultar código",
     },
   },
 
   ui: {
-    loginFailed: "ui.loginFailed",
+    loginFailed: "Falha no login",
   },
 } as const;
 export type ErrorCodes = typeof ErrorCodes;
