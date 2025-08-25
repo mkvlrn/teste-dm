@@ -14,14 +14,13 @@
     "node": "24.x"
   },
   "scripts": {
-    "build": "npx turbo build",
-    "dev": "npx turbo dev",
+    "build": "turbo build",
+    "dev": "turbo dev",
     "start": "docker compose up",
-    "test": "npx turbo test",
-    "test-e2e": "docker compose -f e2e.compose.yml run --rm e2e && docker compose -f e2e.compose.yml down",
-    "biome-check": "npx turbo biome-check",
-    "biome-fix": "npx turbo biome-fix",
-    "typecheck": "npx turbo typecheck",
+    "test": "turbo test",
+    "biome-check": "turbo biome-check",
+    "biome-fix": "turbo biome-fix",
+    "typecheck": "turbo typecheck",
     "prepare": "husky"
   },
   "devDependencies": {

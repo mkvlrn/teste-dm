@@ -20,4 +20,4 @@ jobs:
       - run: npm ci
       - run: |
           npm run biome-check
-          npm run test -- --bail=1
+          npm test
