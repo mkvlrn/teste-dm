@@ -18,6 +18,7 @@
     "dev": "npx turbo dev",
     "start": "docker compose up",
     "test": "npx turbo test",
+    "test-e2e": "docker compose -f e2e.compose.yml run --rm e2e && docker compose -f e2e.compose.yml down",
     "biome-check": "npx turbo biome-check",
     "biome-fix": "npx turbo biome-fix",
     "typecheck": "npx turbo typecheck",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@playwright/test": "^1.55.0",
     "@repo/configs": "*",
     "husky": "^9.1.7",
     "turbo": "^2.5.6"

@@ -18,6 +18,7 @@ node_modules
 # tests
 .nyc_output
 coverage
+e2e/test-results
 
 # environment variables
 .env
