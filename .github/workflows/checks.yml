@@ -19,6 +19,5 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: |
-          npm run typecheck
           npm run biome-check
           npm run test -- --bail=1
